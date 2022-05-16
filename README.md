@@ -4,4 +4,4 @@
 - Visual Studio 2019 install
 - Unity Hub (2021.03.1f) install
 - Github Desktop install
-- C# console Create
+- C# Console Project Create
