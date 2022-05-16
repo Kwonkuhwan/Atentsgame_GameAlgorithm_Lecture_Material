@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\atents220516\\01_Console\\01_Console\\01_Console.csproj",
+      "projectUniqueName": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj",
       "projectName": "01_Console",
-      "projectPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\atents220516\\01_Console\\01_Console\\01_Console.csproj",
+      "projectPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj",
       "packagesPath": "C:\\Users\\kkh\\.nuget\\packages\\",
-      "outputPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\atents220516\\01_Console\\01_Console\\obj\\",
+      "outputPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
