@@ -59,6 +59,7 @@ namespace _02_Console_Training
         public int n_HP;
         public int n_Attack;
         public bool b_Turn;
+        public bool b_Shield;
 
         public int n_Level = 1;
         public int n_Str = 3;
@@ -71,6 +72,7 @@ namespace _02_Console_Training
             n_HP = n_hp;
             n_Attack = 0;
             b_Turn = true;
+            b_Shield = false;
 
             n_Level = 1;
             n_Str = random.Next(1, 6);
@@ -96,37 +98,73 @@ namespace _02_Console_Training
 
         public void LevelUp(Character_Info character1)
         {
-                // 입력받은 횟수만큼 레벨업을 하는 코드 만들기
-                Console.Write("레벨업 할 수를 입력해주세요 : ");
-                int input_LevelUp = int.Parse(Console.ReadLine());
+            // 입력받은 횟수만큼 레벨업을 하는 코드 만들기
+            Console.Write("레벨업 할 수를 입력해주세요 : ");
+            int input_LevelUp = int.Parse(Console.ReadLine());
 
-                int LevelUp_Count = 0;
+            int levelUp_Count = 0;
 
-                Console.WriteLine($"[{character1.str_Tribe}] 현재 레벨 : {character1.n_Level}, 현재 스텟 : 힘({character1.n_Str}), 민({character1.n_Dex}), 지({character1.n_Int})");
+            Console.WriteLine($"┌ 스테이터스 ────────────────────────┐");
+            Console.WriteLine($"│ 이름 : [{character1.str_Tribe}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│ 레벨 : [{character1.n_Level}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│   힘 : [{character1.n_Str}]".PadRight(36, ' ') + "│");
+            Console.WriteLine($"│ 민첩 : [{character1.n_Dex}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│ 지능 : [{character1.n_Int}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"└────────────────────────────────────┘");
+            Console.WriteLine($"\n");
 
-                while (LevelUp_Count < input_LevelUp)
-                {
-                    character1.n_Level++;
-                    character1.n_Str++;
-                    character1.n_Dex++;
-                    character1.n_Int++;
-                    LevelUp_Count++;
-                }
+            while (levelUp_Count < input_LevelUp)
+            {
+                character1.n_Level++;
+                character1.n_Str++;
+                character1.n_Dex++;
+                character1.n_Int++;
+                levelUp_Count++;
+            }
 
-                Console.WriteLine($"[{character1.str_Tribe}] 레벨 업 후 레벨 : {character1.n_Level}, 레벨 업 후 스텟 : 힘({character1.n_Str}), 민({character1.n_Dex}), 지({character1.n_Int})\n\n");
+            Console.WriteLine($"┌ 바뀐 스테이터스 ───────────────────┐");
+            Console.WriteLine($"│ 이름 : [{character1.str_Tribe}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│ 레벨 : [{character1.n_Level}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│   힘 : [{character1.n_Str}]".PadRight(36, ' ') + "│");
+            Console.WriteLine($"│ 민첩 : [{character1.n_Dex}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│ 지능 : [{character1.n_Int}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"└────────────────────────────────────┘");
+            Console.WriteLine($"\n\n");
 
         }
         private void Attack_action(Character_Info character1, Character_Info character2)
         {
             character1.n_Attack = random.Next(1, 20);
 
+            int attack_Sccuess = random.Next(0, 15);
+
+            if (attack_Sccuess > 3)
+            {
+                if (character2.b_Shield)
+                {
+                    Console.WriteLine($"[ {character2.str_Tribe} 방어 성공 ]\n");
+                    int oldAttack = character1.n_Attack;
+                    character1.n_Attack /= 2;
+                    Console.WriteLine($"[ {character1.str_Tribe} 데미지 {oldAttack} -> {character1.n_Attack} 변경 ]\n");
+                }
+
+                Console.WriteLine($"{character1.str_Tribe} 공격 : [{character1.n_Attack}]\n");
+                Take_Damege(character1, character2);
+            }
+            else
+            {
+                Console.WriteLine($"[ {character1.str_Tribe} 공격 실패... ]\n");
+            }
+        }
+
+        private void Take_Damege(Character_Info character1, Character_Info character2)
+        {
             int old_character2_HP = character2.n_HP;
             character2.n_HP -= character1.n_Attack;
 
             if (character2.n_HP < 0)
                 character2.n_HP = 0;
 
-            Console.WriteLine($"{character1.str_Tribe} 공격 : [ {character1.n_Attack} ]");
             Console.WriteLine($"[ {character2.str_Tribe} hp : {old_character2_HP} -> {character2.n_HP} ]\n");
         }
 
@@ -156,15 +194,22 @@ namespace _02_Console_Training
                 {
                     character1.b_Turn = false;
                     character2.b_Turn = true;
+                    character1.b_Shield = false;
 
                     Console.WriteLine($"{character1.str_Tribe} 턴 입니다.");
-                    Console.WriteLine($"행동을 선택해주세요 : (1) 공격, (2) 대기");
+                    Console.WriteLine($"행동을 선택해주세요 : (1) 공격, (2) 1턴 방어 [공격 1/2], (3) 턴 넘기기");
                     int Control = int.Parse(Console.ReadLine());
                     if (Control == 1)
                     {
                         Attack_action(character1, character2);
                     }
-                    else if (Control == 2)
+                    else if(Control == 2)
+                    {
+                        Console.WriteLine($"{character1.str_Tribe} 방어\n");
+                        character1.b_Shield = true;
+                        continue;
+                    }
+                    else if (Control == 3)
                     {
                         Console.WriteLine($"{character1.str_Tribe} 대기\n");
                         continue;
@@ -174,14 +219,21 @@ namespace _02_Console_Training
                 {
                     character1.b_Turn = true;
                     character2.b_Turn = false;
+                    character2.b_Shield = false;
 
-                    Console.WriteLine($"{character2.str_Tribe} 턴 입니다.(자동)");
-                    int Control = random.Next(1, 3);
+                    Console.WriteLine($"{character2.str_Tribe} 턴 입니다. (자동)");
+                    int Control = random.Next(1, 4);
                     if (Control == 1)
                     {
                         Attack_action(character2, character1);
                     }
                     else if (Control == 2)
+                    {
+                        Console.WriteLine($"{character2.str_Tribe} 방어\n");
+                        character2.b_Shield = true;
+                        continue;
+                    }
+                    else if (Control == 3)
                     {
                         Console.WriteLine($"{character2.str_Tribe} 대기\n");
                         continue;
@@ -191,7 +243,3 @@ namespace _02_Console_Training
         }
     }
 }
-
-// 휴먼 클래스(플레이어) 오크 클래스(적)
-// 프로그램 시작시
-// 입력으로 공격 방어, 오크 반격(공격값 램덤)
