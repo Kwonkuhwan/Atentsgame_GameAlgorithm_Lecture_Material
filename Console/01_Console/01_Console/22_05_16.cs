@@ -68,6 +68,8 @@ namespace _01_Console
             Console.Write("string 값을 입력해 주세요 : ");
             string inputline = Console.ReadLine();
             Console.WriteLine($"inputline : {inputline}");
+
+
         }
     }
 }

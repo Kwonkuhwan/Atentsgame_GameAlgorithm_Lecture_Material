@@ -1,0 +1,14 @@
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.exe
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.deps.json
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.runtimeconfig.json
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.runtimeconfig.dev.json
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.dll
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\bin\Debug\netcoreapp3.1\02_Console.pdb
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.csproj.AssemblyReference.cache
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.AssemblyInfoInputs.cache
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.AssemblyInfo.cs
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.csproj.CoreCompileInputs.cache
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.dll
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.pdb
+C:\Users\Atents\Desktop\게임알고리즘 강의\Atentsgame_GameAlgorithm_Lecture_Material\Console\01_Console\02_Console\obj\Debug\netcoreapp3.1\02_Console.genruntimeconfig.cache
