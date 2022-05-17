@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj": {}
+    "C:\\Users\\Atents\\Desktop\\게임알고리즘 강의\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\01_Console\\01_Console\\01_Console.csproj": {}
   },
   "projects": {
-    "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj": {
+    "C:\\Users\\Atents\\Desktop\\게임알고리즘 강의\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\01_Console\\01_Console\\01_Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj",
+        "projectUniqueName": "C:\\Users\\Atents\\Desktop\\게임알고리즘 강의\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\01_Console\\01_Console\\01_Console.csproj",
         "projectName": "01_Console",
-        "projectPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\01_Console.csproj",
-        "packagesPath": "C:\\Users\\kkh\\.nuget\\packages\\",
-        "outputPath": "D:\\게임알고리즘 및 엔진프로그래밍 전문가 양성\\Project\\Atentsgame_GameAlgorithm_Lecture_Material\\01_Console\\01_Console\\obj\\",
+        "projectPath": "C:\\Users\\Atents\\Desktop\\게임알고리즘 강의\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\01_Console\\01_Console\\01_Console.csproj",
+        "packagesPath": "C:\\Users\\Atents\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Atents\\Desktop\\게임알고리즘 강의\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\01_Console\\01_Console\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kkh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Atents\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
