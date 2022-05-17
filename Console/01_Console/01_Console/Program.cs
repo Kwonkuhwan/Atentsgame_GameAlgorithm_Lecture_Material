@@ -45,8 +45,29 @@ namespace _01_Console
             Console.WriteLine("나는 {0}이고 레벨은 {1}고 경험치는 {2}%이다.", C_Name, level, exp);
             
             // 가장 최신 방법
-            Console.WriteLine($"나는 {C_Name}이고 레벨은 {level}고 경험치는 {exp}%이다.");
+            Console.WriteLine($"나는 {C_Name}이고 레벨은 {level}고 경험치는 {exp:f2}%이다.");
 
+
+            // 스코프(scope)
+            // 변수가 살아 있는 범위
+
+            //int i = 0;
+            //{
+            //    int j = 0;
+            //}
+
+            //j = 30;       // j는 스코프 밖이라 접근이 불가능하다. 에러 발생...
+
+            // 개행문자(줄바꿈용 문자)
+            // "개굴개굴 개구리 노래를 한다."
+            // "아들 손자 며느리 다 모여서."
+            string song = "개굴개굴 개구리 노래를 한다.\n아들 손자 며느리 다 모여서.";
+            Console.WriteLine(song);
+
+            // 입출력 테스트
+            //Console.Write("string 값을 입력해 주세요 : ");
+            //string inputline = Console.ReadLine();
+            //Console.WriteLine($"inputline : {inputline}");
         }
     }
 }
