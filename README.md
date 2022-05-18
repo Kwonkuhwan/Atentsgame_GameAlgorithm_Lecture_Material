@@ -7,3 +7,12 @@
 - Unity Hub (2021.03.1f) install
 - Github Desktop install
 - C# Console Project Create
+
+### 2022.05.17
+- 제어문 강의 들음
+- 클래스 강의 들음
+
+### 2022.05.18
+- private, public의 대한 차이점
+- 프로퍼티 : 특수한 함수(메서드) 
+- 콘솔 전투게임 강의 들음
