@@ -9,16 +9,13 @@ namespace _02_Console_Training
         static void Main(string[] args)
         {
             _22_05_17 program = new _22_05_17();
-            Action action = new Action();
+            ClsAction action = new ClsAction();
 
             Console.Write($"게임에 사용할 닉네임을 정해주세요 : ");
             string userName = Console.ReadLine();
 
-            Character_Info human = new Character_Info();
-            human.Init(userName, 100);
-
-            Character_Info ork = new Character_Info();
-            ork.Init("Ork", program.random.Next(100,201));
+            ClsCharacter human = new ClsCharacter(userName);
+            ClsCharacter ork = new ClsCharacter("Ork", program.random.Next(100, 201));
 
             while (true)
             {
