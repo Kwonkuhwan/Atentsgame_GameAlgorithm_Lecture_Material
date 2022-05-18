@@ -18,7 +18,7 @@ namespace _02_Console_Training
             human.Init(userName, 100);
 
             Character_Info ork = new Character_Info();
-            ork.Init("Ork", 100);
+            ork.Init("Ork", program.random.Next(100,201));
 
             while (true)
             {

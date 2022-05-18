@@ -10,7 +10,13 @@ namespace _02_Console_Training
 
         private string str_UserName;
         private int n_HP;
+        private int n_HP_Max;
+
         private int n_Attack;
+
+        private int n_Magic_Count;
+        private int n_Magic_Heal;
+
         private bool b_Turn;
         private bool b_Shield;
 
@@ -23,7 +29,12 @@ namespace _02_Console_Training
         {
             str_UserName = str_username;
             n_HP = n_hp;
+            n_HP_Max = n_hp;
+
+            n_Magic_Count = 3;
             n_Attack = 0;
+            n_Magic_Heal = 30;
+
             b_Turn = true;
             b_Shield = false;
 
@@ -57,6 +68,16 @@ namespace _02_Console_Training
             set     // n_HP 프로퍼티에 값을 넣을 때 실행되는 함수. 설정되는 값은 value라는 키워드에 들어있다.
             {
                 n_HP = value;
+
+                //if (n_HP > n_HP_Max)
+                //    n_HP = n_HP_Max;
+                //else if (n_HP < 0)
+                //    n_HP = 0;
+
+                // 최소 값과 최대 값 사이의 값은 그래도 리턴
+                // 최소 값 아래의 값은 최소 값으로 리턴
+                // 최대 값 위의 값은 최대 값으로 리턴 
+                n_HP = Math.Clamp(n_HP, 0, n_HP_Max);
             }
         }
 
@@ -69,6 +90,30 @@ namespace _02_Console_Training
             set
             {
                 n_Attack = value;
+            }
+        }
+
+        public int MaicCount
+        {
+            get
+            {
+                return n_Magic_Count;
+            }
+            set
+            {
+                n_Magic_Count = value;
+            }
+        }
+
+        public int MagicHeal
+        {
+            get
+            {
+                return n_Magic_Heal;
+            }
+            set
+            {
+                n_Magic_Heal = value;
             }
         }
 
@@ -226,12 +271,36 @@ namespace _02_Console_Training
             int old_character2_HP = character2.HealthPoint;
             character2.HealthPoint -= character1.AttackDamage;
 
-            if (character2.HealthPoint < 0)
-                character2.HealthPoint = 0;
-
             Console.WriteLine($"[ {character2.UserName} hp : {old_character2_HP} -> {character2.HealthPoint} ]\n");
         }
 
+        private bool Magic_Heal(Character_Info character1)
+        {
+            if (character1.MaicCount <= 0)
+            { 
+                Console.WriteLine($"[ {character1.UserName} 남은 Magic Count가 없습니다. ]\n");
+                return false;
+            }
+
+            int old_character_HP = character1.HealthPoint;
+            character1.HealthPoint += character1.MagicHeal;
+            character1.MaicCount -= 1;
+
+            Console.WriteLine($"[ {character1.UserName} 남은 Magic Count : {character1.MaicCount} ]\n");
+            Console.WriteLine($"[ {character1.UserName} hp : {old_character_HP} -> {character1.HealthPoint} ]\n");
+
+            return true;
+        }
+
+        private bool Run()
+        {
+            int n_Run_Success = random.Next(0, 15);
+
+            if (n_Run_Success > 5)
+                return false;
+            else
+                return true;
+        }
         public void Attack(Character_Info character1, Character_Info character2)
         {
             character1.Turn = Convert.ToBoolean(random.Next(0, 2));        // 2보다 작은 수 리턴
@@ -241,16 +310,21 @@ namespace _02_Console_Training
             else
                 character2.Turn = true;
 
+            if (character1.Turn)
+                Console.WriteLine($"지나가는 {character2.UserName}에게 싸움를 걸었다.\n");
+            else
+                Console.WriteLine($"지나가는 {character2.UserName}가 싸움를 걸었다.\n");
+
             while (true)
             {
                 if (character1.HealthPoint <= 0)
                 {
-                    Console.WriteLine($"{character1.UserName} 승\n");
+                    Console.WriteLine($"{character2.UserName}(이)가 {character1.UserName}을 처참히 죽였다.\n");
                     break;
                 }
                 else if (character2.HealthPoint <= 0)
                 {
-                    Console.WriteLine($"{character1.UserName} 승\n");
+                    Console.WriteLine($"{character1.UserName}(이)가 {character2.UserName}을 처참히 죽였다.\n");
                     break;
                 }
 
@@ -261,7 +335,7 @@ namespace _02_Console_Training
                     character1.Shield = false;
 
                     Console.WriteLine($"{character1.UserName} 턴 입니다.");
-                    Console.WriteLine($"행동을 선택해주세요 : (1) 공격, (2) 1턴 방어 [공격 1/2], (3) 턴 넘기기");
+                    Console.WriteLine($"행동을 선택해주세요 : (1) 공격, (2) 힐, (3) 1턴 방어 [공격 1/2], (4) 턴 넘기기, (5) 도망간다");
 
                     int Control = -1;
                     try
@@ -279,14 +353,37 @@ namespace _02_Console_Training
                     }
                     else if (Control == 2)
                     {
+                        if(!Magic_Heal(character1))
+                        {
+                            character1.Turn = true;
+                            character2.Turn = false;
+                        }
+                               
+                    }
+                    else if (Control == 3)
+                    {
                         Console.WriteLine($"{character1.UserName} 방어\n");
                         character1.Shield = true;
                         continue;
                     }
-                    else if (Control == 3)
+                    else if (Control == 4)
                     {
                         Console.WriteLine($"{character1.UserName} 대기\n");
                         continue;
+                    }
+                    else if (Control == 5)
+                    {
+                        Console.WriteLine($"{character1.UserName} 도망\n");
+                        if (Run())
+                        {
+                            Console.WriteLine($"{character1.UserName} 도망 성공\n");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{character1.UserName} 도망 실패\n");
+                            continue;
+                        }
                     }
                 }
                 else if (character2.Turn)
