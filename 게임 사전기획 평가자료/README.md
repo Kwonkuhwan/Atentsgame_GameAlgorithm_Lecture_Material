@@ -6,13 +6,13 @@
 <span style="color:#008000">초록글씨</span>
 <span style="color:#ffd33d">노란글씨</span>
 
-<span style='background-color:#fff5b1'>노란형광펜</span>
-<span style='background-color:#f6f8fa'>회색형광펜</span>
-<span style='background-color:#f1f8ff'>파란형광펜</span>
-<span style='background-color:#ffdce0'>빨간형광펜</span>
-<span style='background-color:#dcffe4'>초록형광펜</span>
-<span style='background-color:#f5f0ff'>보라형광펜</span>
-<span style='background-color:#F7DDBE'>주황형광펜</span>
+<span style="background-color:#fff5b1">노란형광펜</span>
+<span style="background-color:#f6f8fa">회색형광펜</span>
+<span style="background-color:#f1f8ff">파란형광펜</span>
+<span style="background-color:#ffdce0">빨간형광펜</span>
+<span style="background-color:#dcffe4">초록형광펜</span>
+<span style="background-color:#f5f0ff">보라형광펜</span>
+<span style="background-color:#F7DDBE">주황형광펜</span>
 -->
 
 ## 2022.05.19 기획 이론 공부
@@ -85,6 +85,6 @@
 
 ### 밸런스
 - 학습곡선 : 유저가 게임을 성취도 그래프.
-    - 유저의 학습정도에 따라 난이도가 조절 되어야 한다.(<span style='background-color:#fff5b1'>PVE</span>)
+    - 유저의 학습정도에 따라 난이도가 조절 되어야 한다.(<span style="background-color:#fff5b1">PVE</span>)
 - PVP 밸런스 : 평등, 대칭이 가장 완벽한 밸런스, 다만 단조로워서 재미가 떨어진다.
-- 우월전략이 나오면 안된다.(<span style='background-color:#fff5b1'>무조건 유리한 전략이 나오면 안된다.</span>)
+- 우월전략이 나오면 안된다.(<span style="background-color:#fff5b1">무조건 유리한 전략이 나오면 안된다.</span>)
