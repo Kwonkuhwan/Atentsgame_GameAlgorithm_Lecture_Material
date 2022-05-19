@@ -6,38 +6,38 @@ namespace _02_Console_Training
 {
     class ClsCharacter
     {
-        Random random = new Random();
+        protected Random random = new Random(DateTime.Now.Millisecond);
 
-        private string str_UserName;
-        private int n_HP;
-        private int n_HP_Max;
+        protected string str_UserName;
+        protected int n_HP;
+        protected int n_HP_Max;
 
-        private int n_Attack;
+        protected int n_Attack;
 
-        private int n_Magic_Count;
-        private int n_Magic_Heal;
+        protected int n_Magic_Count;
+        protected int n_Magic_Heal;
 
-        private bool b_Turn;
-        private bool b_Shield;
+        protected bool b_Turn;
+        protected bool b_Shield;
 
-        private int n_Level;
-        private int n_Str;
-        private int n_Dex;
-        private int n_Int;
+        protected int n_Level;
+        protected int n_Str;
+        protected int n_Dex;
+        //protected int n_Int;
 
         public ClsCharacter()
         {
             UserName = "";
-            HealthPoint = 100;
             MaxHealthPoint = 100;
+            HealthPoint = 100;
 
             Level = 1;
             Strength = random.Next(1, 6);
             Dexterity = random.Next(1, 6);
-            Intelligence = random.Next(1, 6);
+            //Intelligence = random.Next(1, 6);
 
             MagicCount = 3;
-            AttackDamage = n_Str + n_Dex + n_Int;
+            AttackDamage = Strength + Dexterity /* + Intelligence */;
             MagicHeal = 30;
 
             Turn = true;
@@ -53,10 +53,10 @@ namespace _02_Console_Training
             Level = 1;
             Strength = random.Next(1, 6);
             Dexterity = random.Next(1, 6);
-            Intelligence = random.Next(1, 6);
+            //Intelligence = random.Next(1, 6);
 
             MagicCount = 3;
-            AttackDamage = n_Str + n_Dex + n_Int;
+            AttackDamage = Strength + Dexterity /* + Intelligence */;
             MagicHeal = 30;
 
             Turn = true;
@@ -154,10 +154,50 @@ namespace _02_Console_Training
             set => n_Dex = value;
         }
 
-        public int Intelligence
+        //public int Intelligence
+        //{
+        //    get => n_Int;
+        //    set => n_Int = value;
+        //}
+
+        public virtual void Current_Status()
         {
-            get => n_Int;
-            set => n_Int = value;
+            Console.WriteLine($"┌ 스테이터스 ────────────────────────┐");
+            Console.WriteLine($"│   이름 : [{UserName}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│   레벨 : [{Level}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│   체력 : [{HealthPoint}]".PadRight(36, ' ') + "│");
+            Console.WriteLine($"│     힘 : [{Strength}]".PadRight(36, ' ') + "│");
+            Console.WriteLine($"│   민첩 : [{Dexterity}]".PadRight(35, ' ') + "│");
+            //Console.WriteLine($"│   지능 : [{Intelligence}]".PadRight(35, ' ') + "│");
+            Console.WriteLine($"│ 공격력 : [{AttackDamage}]".PadRight(34, ' ') + "│");
+            Console.WriteLine($"└────────────────────────────────────┘");
+            Console.WriteLine($"\n\n");
+        }
+
+        public virtual void LevelUp()
+        {
+            // 입력받은 횟수만큼 레벨업을 하는 코드 만들기
+            Console.Write("레벨업 할 수를 입력해주세요 : ");
+            int input_LevelUp = int.Parse(Console.ReadLine());
+            Console.Write("\n");
+
+            int levelUp_Count = 0;
+
+            Console.WriteLine("현재 스테이터스 표시 : ");
+            Current_Status();
+
+            while (levelUp_Count < input_LevelUp)
+            {
+                Level++;
+                Strength++;
+                Dexterity++;
+                //Intelligence++;
+                levelUp_Count++;
+            }
+            AttackDamage = Strength + Dexterity/* + Intelligence*/;
+
+            Console.WriteLine("바뀐 스테이터스 표시 : ");
+            Current_Status();
         }
     }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kkh\\Desktop\\아텐츠게임아카데미\\게임알고리즘\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj": {}
+    "C:\\Users\\Atents\\Desktop\\AtentsGame\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kkh\\Desktop\\아텐츠게임아카데미\\게임알고리즘\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj": {
+    "C:\\Users\\Atents\\Desktop\\AtentsGame\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kkh\\Desktop\\아텐츠게임아카데미\\게임알고리즘\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj",
+        "projectUniqueName": "C:\\Users\\Atents\\Desktop\\AtentsGame\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj",
         "projectName": "02_Console_Training",
-        "projectPath": "C:\\Users\\kkh\\Desktop\\아텐츠게임아카데미\\게임알고리즘\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj",
-        "packagesPath": "C:\\Users\\kkh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kkh\\Desktop\\아텐츠게임아카데미\\게임알고리즘\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\obj\\",
+        "projectPath": "C:\\Users\\Atents\\Desktop\\AtentsGame\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\02_Console_Training.csproj",
+        "packagesPath": "C:\\Users\\Atents\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Atents\\Desktop\\AtentsGame\\Atentsgame_GameAlgorithm_Lecture_Material\\Console\\02_Console_Training\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kkh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Atents\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

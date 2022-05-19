@@ -4,7 +4,7 @@ namespace _02_Console_Training
 {
     class _22_05_17
     {
-        Random random = new Random();
+        Random random = new Random(DateTime.Now.Millisecond);
 
         static void Main(string[] args)
         {
@@ -14,8 +14,8 @@ namespace _02_Console_Training
             Console.Write($"게임에 사용할 닉네임을 정해주세요 : ");
             string userName = Console.ReadLine();
 
-            ClsCharacter human = new ClsCharacter(userName);
-            ClsCharacter ork = new ClsCharacter("Ork", program.random.Next(100, 201));
+            ClsHuman human = new ClsHuman(userName);
+            ClsOrk ork = new ClsOrk("Ork", program.random.Next(100, 201));
 
             while (true)
             {
@@ -26,13 +26,33 @@ namespace _02_Console_Training
 
                 if (inputControl == 1)
                 {
-                    Console.WriteLine($"현재 스테이터스 선택");
-                    action.Current_Status(human);
+                    while (true)
+                    {
+                        Console.WriteLine($"현재 스테이터스 선택");
+                        Console.WriteLine($"사용할 메뉴 선택 : (1) 자신, (2) 오크, (99) 뒤로가기");
+                        int select = int.Parse(Console.ReadLine());
+                        if (select == 1)
+                            human.Current_Status();
+                        else if (select == 2)
+                            ork.Current_Status();
+                        else if (select == 99)
+                            break;
+                    }
                 }
                 else if (inputControl == 2)
                 {
-                    Console.WriteLine($"레벨업 선택");
-                    action.LevelUp(human);
+                    while (true)
+                    {
+                        Console.WriteLine($"레벨업 선택");
+                        Console.WriteLine($"사용할 메뉴 선택 : (1) 자신, (2) 오크, (99) 뒤로가기");
+                        int select = int.Parse(Console.ReadLine());
+                        if (select == 1)
+                            human.LevelUp();
+                        else if (select == 2)
+                            ork.Current_Status();
+                        else if (select == 99)
+                            break;
+                    }
                 }
                 else if(inputControl == 3)
                 {

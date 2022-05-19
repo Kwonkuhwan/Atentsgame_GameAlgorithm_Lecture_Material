@@ -7,44 +7,7 @@ namespace _02_Console_Training
     class ClsAction
     {
         Random random = new Random();
-        public void Current_Status(ClsCharacter character1)
-        {
-            Console.WriteLine($"┌ 스테이터스 ────────────────────────┐");
-            Console.WriteLine($"│   이름 : [{character1.UserName}]".PadRight(35, ' ') + "│");
-            Console.WriteLine($"│   레벨 : [{character1.Level}]".PadRight(35, ' ') + "│");
-            Console.WriteLine($"│     힘 : [{character1.Strength}]".PadRight(36, ' ') + "│");
-            Console.WriteLine($"│   민첩 : [{character1.Dexterity}]".PadRight(35, ' ') + "│");
-            Console.WriteLine($"│   지능 : [{character1.Intelligence}]".PadRight(35, ' ') + "│");
-            Console.WriteLine($"│ 공격력 : [{character1.AttackDamage}]".PadRight(34, ' ') + "│");
-            Console.WriteLine($"└────────────────────────────────────┘");
-            Console.WriteLine($"\n\n");
-        }
-
-        public void LevelUp(ClsCharacter character1)
-        {
-            // 입력받은 횟수만큼 레벨업을 하는 코드 만들기
-            Console.Write("레벨업 할 수를 입력해주세요 : ");
-            int input_LevelUp = int.Parse(Console.ReadLine());
-            Console.Write("\n");
-
-            int levelUp_Count = 0;
-
-            Console.WriteLine("현재 스테이터스 표시 : ");
-            Current_Status(character1);
-
-            while (levelUp_Count < input_LevelUp)
-            {
-                character1.Level++;
-                character1.Strength++;
-                character1.Dexterity++;
-                character1.Intelligence++;
-                levelUp_Count++;
-            }
-            character1.AttackDamage = character1.Strength + character1.Dexterity + character1.Intelligence;
-
-            Console.WriteLine("바뀐 스테이터스 표시 : ");
-            Current_Status(character1);
-        }
+              
         private void Attack_action(ClsCharacter character1, ClsCharacter character2)
         {
             //character1.AttackDamage = random.Next(1, 20);
@@ -71,7 +34,15 @@ namespace _02_Console_Training
                 Console.WriteLine($"[ {character1.UserName} 데미지 {oldAttack} -> {AttackDamage} 변경 ]\n");
             }
 
-            Console.WriteLine($"{character1.UserName} 공격 : [{AttackDamage}]\n");
+            int critical = random.Next(0, 100);
+            if (critical != 99)
+            {
+                double crit = random.NextDouble();
+                AttackDamage = (int)(AttackDamage * (1.0f + crit));
+                Console.WriteLine($"{character1.UserName} 크리티컬 공격[{(1.0f + crit):F2}] : [{AttackDamage}]\n");
+            }
+            else
+                Console.WriteLine($"{character1.UserName} 공격 : [{AttackDamage}]\n");
 
             int old_character2_HP = character2.HealthPoint;
             character2.HealthPoint -= AttackDamage;
