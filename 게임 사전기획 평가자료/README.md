@@ -1,5 +1,20 @@
 # 게임 사전기획 평가 공부 자료
 
+<!-->
+<span style="color:red">빨강글씨</span>
+<span style="color:#0000FF">파란글씨</span>
+<span style="color:#008000">초록글씨</span>
+<span style="color:#ffd33d">노란글씨</span>
+
+<span style='background-color:#fff5b1'>노란형광펜</span>
+<span style='background-color:#f6f8fa'>회색형광펜</span>
+<span style='background-color:#f1f8ff'>파란형광펜</span>
+<span style='background-color:#ffdce0'>빨간형광펜</span>
+<span style='background-color:#dcffe4'>초록형광펜</span>
+<span style='background-color:#f5f0ff'>보라형광펜</span>
+<span style='background-color:#F7DDBE'>주황형광펜</span>
+-->
+
 ## 2022.05.19 기획 이론 공부
 
 ### 무엇을 만들 것인가?
@@ -20,7 +35,8 @@
 - 요즘 장르로 게임을 구분하기가 힘들다. (여러 장르가 겹쳐있다.)
 - 장르를 설정하는 것으로 대체적인 게임 방향은 지정할 수 있다.
 
-### 게임 사전 기획 : 아이디어 회의와 장르 설정 등을 통해 만들 게임을 구상하는것
+### 게임 사전 기획 
+- 아이디어 회의와 장르 설정 등을 통해 만들 게임을 구상하는것
 
 ### 게임 회사
 - 회사가 존재하는 이유 : 이익을 창출하기 위해.
@@ -63,4 +79,12 @@
 
 ### 자원
 - 돈, 화폐 : 연화(Soft Currency, 인 게임 재화), 경화(Hard Currency)
-- 에너지 : 시간이 지나면 충전이 되는 것들.(스테미너 시스템)
+- 에너지 : 시간이 지나면 충전이 되는 것들(스테미너 시스템)
+- 아이템
+- 병목구간의 설정이 중요.
+
+### 밸런스
+- 학습곡선 : 유저가 게임을 성취도 그래프.
+    - 유저의 학습정도에 따라 난이도가 조절 되어야 한다.(<span style='background-color:#fff5b1'>PVE</span>)
+- PVP 밸런스 : 평등, 대칭이 가장 완벽한 밸런스, 다만 단조로워서 재미가 떨어진다.
+- 우월전략이 나오면 안된다.(<span style='background-color:#fff5b1'>무조건 유리한 전략이 나오면 안된다.</span>)
