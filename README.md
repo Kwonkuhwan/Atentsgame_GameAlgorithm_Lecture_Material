@@ -34,3 +34,4 @@
 - 유니티 player 설정 방법
 - player 키 다운으로 이동 방법
 - Input system, Input manager의 차이
+- 2D_Shooting 게임 Player move 작업 전까지 진행
