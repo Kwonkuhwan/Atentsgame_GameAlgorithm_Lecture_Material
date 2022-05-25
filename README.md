@@ -35,3 +35,8 @@
 - player 키 다운으로 이동 방법
 - Input system, Input manager의 차이
 - 2D_Shooting 게임 Player move 작업 전까지 진행
+
+### 2022.05.25
+- 2D_Shooting 게임 키보드 입력 작업 진행
+- 경계 박스 작업 진행
+- Player 부스터 생성 (Shift 버튼)
