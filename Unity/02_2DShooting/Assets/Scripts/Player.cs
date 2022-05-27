@@ -5,6 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    // 값타입(Value type : 실제 값을 가지는 타입 int, float, bool)
+    // 참조타입(reference type : 각정 클래스들을 new 한 것들을 담을 수 있는 타입, 메모리 주소 같은 것들을 저장하는 타입)
+    // null은 참초타입의 변수가 비어있다고 표시하는 키워드
+    // var는 컴파일타입에 변수의 타입을 결정해주는 키워드이다.
+
+    // public 변수는 인스펙터 창에서 확인 할 수 있다.
+    public GameObject ShootPrefab = null;
+
     public float f_moveSpeed = 2.0f;
     public float f_boostSpeed = 1.0f;
 
@@ -114,17 +122,23 @@ public class Player : MonoBehaviour
 
     public void OnFireInput(InputAction.CallbackContext context)
     {
-        if(context.started)         // 키를 누르기 시작했을때(키보드에서는 started와 performed의 차이가 없다)
+        //if(context.started)         // 키를 누르기 시작했을때(키보드에서는 started와 performed의 차이가 없다)
+        //{
+        //    Debug.Log("OnFire - 시작");
+        //}
+        //else if (context.performed)  // 키를 완전히 눌렀을때
+        //{
+        //    Debug.Log("OnFire - 완전히 누름");
+        //}
+        //else if (context.canceled)  // 키를 땠을때
+        //{
+        //    Debug.Log("OnFire - 키보드 땠음");
+        //}
+
+        if(context.started)
         {
-            Debug.Log("OnFire - 시작");
-        }
-        else if(context.performed)  // 키를 완전히 눌렀을때
-        {
-            Debug.Log("OnFire - 완전히 누름");
-        }
-        else if (context.canceled)  // 키를 땠을때
-        {
-            Debug.Log("OnFire - 키보드 땠음");
+            Instantiate(ShootPrefab);
+
         }
     }
 }
