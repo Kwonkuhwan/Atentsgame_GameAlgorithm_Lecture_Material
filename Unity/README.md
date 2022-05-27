@@ -30,3 +30,18 @@
 
 ### 원, 캡슐, 박스
 - 속도는 원이 제일 빠르다.
+
+***
+
+## Animation
+
+### Animator
+- 애니메이션을 재생하기 위해 필요한 컴포넌트
+
+### Animator Contoller
+- Animator가 어떤 애니메이션을 재생할지 결정하는 에셋(파일)
+
+### Animation Clip
+- 실제 애니메이션 하나
+
+### Animator Contoller에는 여러개의 Animation Clip가 있음.
