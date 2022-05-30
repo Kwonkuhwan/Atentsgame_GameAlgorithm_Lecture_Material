@@ -12,13 +12,15 @@ public class Player : MonoBehaviour
 
     // public 변수는 인스펙터 창에서 확인 할 수 있다.
     public GameObject ShootPrefab = null;
+    public Transform[] FirePosition = null;
 
     public float f_moveSpeed = 2.0f;
     public float f_boostSpeed = 1.0f;
 
     private Vector3 direction = Vector3.zero;
     private Rigidbody2D rigid = null;       // 계속 사용할 컴포넌트는 한번만 찾는게 좋다.
-    private bool b_Boost = false;
+   
+    private IEnumerator shoot_coroutine = null;
 
     private void Awake()        // 게임 오브젝트가 만들어진 직후에 호출
     {
@@ -31,9 +33,10 @@ public class Player : MonoBehaviour
     }
 
     // Start is called before the first frame update => 게임이 시작되었을 때 Start가 호출됩니다.(첫번째 Update가 실행되기 전에)
-    //void Start()
-    //{        
-    //}
+    void Start()
+    {
+        shoot_coroutine = ShootCoroutine();
+    }
 
     // Update is called once per frame => 게임이 실행되는 도중에 주기적으로 호출된다.
     void Update()
@@ -135,10 +138,49 @@ public class Player : MonoBehaviour
         //    Debug.Log("OnFire - 키보드 땠음");
         //}
 
-        if(context.started)
+        if (context.started)
         {
-            Instantiate(ShootPrefab);
+            //    // 3줄 발사
+            //    for (int i = 0; i < 3; i++)
+            //    {
+            //        GameObject obj = Instantiate(ShootPrefab);                                  // 총알 생성
+            //        obj.transform.position = transform.position + (transform.right * 1.2f) + (transform.up * (i-1) * 0.4f);       // 플레이어 오른쪽으로 1.2만큼 떨어진 위치에 배치           
+            //        obj.transform.rotation = transform.rotation;                                // 플레이어의 회전을 그대로 적용
+            //    }
 
+            // 위치 표시용 빈 게임 오브젝트를 이용해 총알 발사(여러개 가능)
+            //for (int i = 0; i < FirePosition.Length; i++)
+            //{
+            //    GameObject obj = Instantiate(ShootPrefab);
+            //    //obj.transform.parent = null;        // obj의 부모를 제거하기
+            //    obj.transform.position = FirePosition[i].position;
+            //    obj.transform.rotation = FirePosition[i].rotation;
+            //}
+
+            Debug.Log("b_stop_Shoot_coroutine = fasle");
+            StartCoroutine(shoot_coroutine);
+        }
+        else if (context.canceled)
+        {
+            Debug.Log("b_stop_Shoot_coroutine = true");
+            StopCoroutine(shoot_coroutine);
+        }
+    }
+
+    IEnumerator ShootCoroutine()                                 // 코루틴 정의
+    {
+        //yield return new WaitForSeconds(1.0f);                  // 1초 대기
+
+        while (true)
+        {
+            for (int i = 0; i < FirePosition.Length; i++)
+            {
+                GameObject obj = Instantiate(ShootPrefab);
+                //obj.transform.parent = null;        // obj의 부모를 제거하기
+                obj.transform.position = FirePosition[i].position;
+                obj.transform.rotation = FirePosition[i].rotation;
+            }
+            yield return new WaitForSeconds(0.2f);              // 0.2초 대기
         }
     }
 }
