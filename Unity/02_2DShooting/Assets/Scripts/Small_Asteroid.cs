@@ -25,4 +25,9 @@ public class Small_Asteroid : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(this.gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

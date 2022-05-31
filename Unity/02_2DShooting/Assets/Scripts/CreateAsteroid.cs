@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateEnemy : MonoBehaviour
+public class CreateAsteroid : MonoBehaviour
 {
     public float spawnInterval = 1.0f;
-    public GameObject EnemyPrefab = null;
-    public float randomRange = 8.0f;
+    public GameObject AsteroidPrefab = null;
+    public float UprandomRange = 8.0f;
+    public float RightrandomRange = 8.0f;
 
     WaitForSeconds waitSecond = null;
 
@@ -18,7 +19,7 @@ public class CreateEnemy : MonoBehaviour
 
     void Create()
     {
-       StartCoroutine(Spawn());
+        StartCoroutine(Spawn());
     }
 
     IEnumerator Spawn()      // 코루틴 콜백 함수
@@ -26,9 +27,10 @@ public class CreateEnemy : MonoBehaviour
         while (true)
         {
             yield return waitSecond;
-            GameObject obj = Instantiate(EnemyPrefab);
+            GameObject obj = Instantiate(AsteroidPrefab);
             obj.transform.position = transform.position;
-            obj.transform.Translate(Vector3.up* Random.Range(0.0f, randomRange));
+            obj.transform.Translate(Vector3.up * Random.Range(-UprandomRange, UprandomRange));
+            obj.transform.Translate(Vector3.right * Random.Range(-RightrandomRange, RightrandomRange));
         }
     }
 }

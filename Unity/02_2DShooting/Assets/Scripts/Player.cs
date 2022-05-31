@@ -157,12 +157,12 @@ public class Player : MonoBehaviour
             //    obj.transform.rotation = FirePosition[i].rotation;
             //}
 
-            Debug.Log("b_stop_Shoot_coroutine = fasle");
+            //Debug.Log("b_stop_Shoot_coroutine = fasle");
             StartCoroutine(shoot_coroutine);
         }
         else if (context.canceled)
         {
-            Debug.Log("b_stop_Shoot_coroutine = true");
+            //Debug.Log("b_stop_Shoot_coroutine = true");
             StopCoroutine(shoot_coroutine);
         }
     }
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
                 obj.transform.position = FirePosition[i].position;
                 obj.transform.rotation = FirePosition[i].rotation;
             }
-            yield return new WaitForSeconds(0.2f);              // 0.2초 대기
+            yield return new WaitForSeconds(0.5f);              // 0.2초 대기
         }
     }
 }
