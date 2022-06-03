@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splitCount: 3
-  splitTime: 10
+  splitTime: 100
   hit_splitTime: 0
   hit_Count: 3
+  moveSpeed: 1
   smail_AsteroidPrefab: {fileID: 5742192348501662216, guid: 46b2bf278821639459e49287d4f3afee, type: 3}
+  targetDir: {x: 0, y: 0, z: 0}
 --- !u!58 &2622894881853315587
 CircleCollider2D:
   m_ObjectHideFlags: 0
