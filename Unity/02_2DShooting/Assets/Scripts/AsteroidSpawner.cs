@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class AsteroidSpawner : EnemySpawner
 {
-    Vector3 startPosition = Vector3.zero;
-    Vector3 endPosition = Vector3.zero;
-
     private void Awake()
     {
         //GameObject obj = GameObject.Find("이름");                         // 이름으로 찾기. 가장 비효율적.

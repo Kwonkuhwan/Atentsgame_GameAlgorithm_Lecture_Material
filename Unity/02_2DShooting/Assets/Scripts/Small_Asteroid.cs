@@ -9,6 +9,8 @@ public class Small_Asteroid : MonoBehaviour
     Rigidbody2D rigid = null;
     SpriteRenderer AsteroidRenderer = null;
 
+    public int broken_score = 1;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -36,5 +38,6 @@ public class Small_Asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(this.gameObject);
+        GameManager.Inst.Score += broken_score;
     }
 }

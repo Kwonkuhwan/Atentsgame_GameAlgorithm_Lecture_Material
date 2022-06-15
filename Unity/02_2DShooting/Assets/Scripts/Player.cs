@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,19 +13,42 @@ public class Player : MonoBehaviour
 
     // public 변수는 인스펙터 창에서 확인 할 수 있다.
     public GameObject ShootPrefab = null;
+    public GameObject flash = null;
+    public GameObject gameover = null;
     public Transform[] FirePosition = null;
 
     public float f_moveSpeed = 2.0f;
     public float f_boostSpeed = 1.0f;
 
     private Vector3 direction = Vector3.zero;
-    private Rigidbody2D rigid = null;       // 계속 사용할 컴포넌트는 한번만 찾는게 좋다.
-   
     private IEnumerator shoot_coroutine = null;
+    private readonly int anim_hash_InputY = Animator.StringToHash("inputY");
+
+    private int life = 3;
+
+    public int Life
+    {
+        get => life;
+    }
+
+    public Action OnHit = null;     // action : C#이 미리 만들어 놓은 delegate 타입
+
+    private Rigidbody2D rigid = null;       // 계속 사용할 컴포넌트는 한번만 찾는게 좋다.
+    private Animator anim = null;
+    //private CapsuleCollider2D collider = null;
+    private SpriteRenderer spriteRenderer = null;   // 비행기 이미지의 aplha값을 변경하기 위해 필요.
+
+    private int layerIndex = 0;         // 다른적과 충돌하지 않기 위해 변경시킬 Border의 레이어 인덱스
+    private float timeElapsed = 0.0f;
+    private bool isDead = false;
 
     private void Awake()        // 게임 오브젝트가 만들어진 직후에 호출
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        //collider = GetComponent<CapsuleCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();    // GetComponet는 느리기 때문에 한번만 찾도록 캐싱해 놓은 것
+        layerIndex = LayerMask.NameToLayer("Border");       // 미리 찾아 놓은것 (이것도 캐싱)
 
         // Unity는 안 움직이는 Collider는 하나로 합친 후 움직이는 Collider와 충돌처리를 계산한다.
         // Unity는 Rigidbody가 있는 오브젝트만 움직인 오브젝트로 판단한다.
@@ -84,6 +108,14 @@ public class Player : MonoBehaviour
         /**************************************************************************************************************/
         #endregion
 
+        if (gameObject.layer == layerIndex)
+        {
+            timeElapsed += Time.deltaTime * 30.0f;
+            //Debug.Log("무적");
+            float alpha = MathF.Cos(timeElapsed + 1.0f) * 0.5f;
+            spriteRenderer.color = new Color(1, 1, 1, alpha);
+        }
+
     }
 
     private void FixedUpdate()
@@ -104,13 +136,28 @@ public class Player : MonoBehaviour
         //transform.Translate(1 * Time.deltaTime, 0, 0); // 계속 오른쪽으로 이동하는 코드
 
         // Rigidbody를 이용해서 이동
-        rigid.MovePosition(transform.position + (direction.normalized * f_moveSpeed * f_boostSpeed * Time.fixedDeltaTime));
+        if (!isDead)
+        {
+            rigid.MovePosition(transform.position + (direction.normalized * f_moveSpeed * f_boostSpeed * Time.fixedDeltaTime));
+        }
+        else
+        {
+            rigid.AddForce(Vector2.left * 0.2f, ForceMode2D.Impulse);   // 뒤로 미는 힘 더하기
+            rigid.AddTorque(10.0f); // 10도씩 돌리는 힘 더하기
+        }
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
-    {       
+    {
         direction = context.ReadValue<Vector2>();
+
+        //anim.SetFloat("inputY", direction.y);
+        anim.SetFloat(anim_hash_InputY, direction.y);
+
+        // 해시 함수 : 데이터를 특정 크기의 유니크한 요약본으로 만들어 주는 함수
+        // 해시 충돌 : 다른 데이터를 해시 함수로 돌렸는데 같은 해시 값이 나온 경우
     }
+
     public void OnBoostInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -169,8 +216,6 @@ public class Player : MonoBehaviour
 
     IEnumerator ShootCoroutine()                                 // 코루틴 정의
     {
-        //yield return new WaitForSeconds(1.0f);                  // 1초 대기
-
         while (true)
         {
             for (int i = 0; i < FirePosition.Length; i++)
@@ -180,7 +225,66 @@ public class Player : MonoBehaviour
                 obj.transform.position = FirePosition[i].position;
                 obj.transform.rotation = FirePosition[i].rotation;
             }
-            yield return new WaitForSeconds(0.2f);              // 0.2초 대기
+            yield return new WaitForSeconds(0.2f);  // 0.2초 대기
+
+            flash.SetActive(true);
+            StartCoroutine(FlashOff());
         }
+    }
+
+    IEnumerator FlashOff()                                 // 코루틴 정의
+    {
+        yield return new WaitForSeconds(0.1f);                  // 1초 대기
+        flash.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            life -= 1;
+            if (life > 0)
+            {
+                OnHit?.Invoke();
+
+                //collider.enabled = false;
+                StartCoroutine(OnHitProcess());
+            }
+            else
+            {
+                //Destroy(this.gameObject);
+
+                Dead();
+            }
+        }
+    }
+
+    void Dead()
+    {
+        isDead = true;
+
+        PlayerInput input = GetComponent<PlayerInput>();
+        input.currentActionMap.Disable();       // 입력 막기
+
+        rigid.gravityScale = 1.0f;              // 중력 적용 받아 바닥으로 떨어지게 만들기
+        rigid.freezeRotation = false;           // 회전 막아놓았던 것 풀기
+
+        GetComponent<CapsuleCollider2D>().enabled = false;  // 다른애랑 부딪히는 것 방지
+
+        gameover.SetActive(true);
+    }
+
+    IEnumerator OnHitProcess()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Border");
+        timeElapsed = 0.0f;
+        //anim.SetTrigger("Hit");
+
+        yield return new WaitForSeconds(3.0f);
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        spriteRenderer.color = Color.white;     // 색상도 다시 완전 불투명으로 변경
+        //anim.SetTrigger("ToNormal");
+        //collider.enabled = true;
     }
 }

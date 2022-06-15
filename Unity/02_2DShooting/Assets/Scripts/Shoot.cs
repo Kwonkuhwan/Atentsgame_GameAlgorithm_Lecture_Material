@@ -7,10 +7,12 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    public float lifeTime = 3.0f;
+    public GameObject hit = null;
 
+    public float lifeTime = 3.0f;
     public float speed = 1.0f;
-    Rigidbody2D rigid = null;
+
+    private Rigidbody2D rigid = null;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class Shoot : MonoBehaviour
     {
         // 벡터 : 힘의 방향과 크기
         rigid.velocity = transform.right * speed;
+
         //Destroy(this.gameObject, lifeTime);     // lifeTime초 후에 게임 오브젝트를 삭제한다.
         StartCoroutine(DestroyDelay());     // 코루틴 시작
     }
@@ -42,6 +45,8 @@ public class Shoot : MonoBehaviour
 
     //}
 
+    bool isOnDestroy = false;
+
     /// <summary>
     /// 서로 충돌했을 때 실행되는 함수 (이 스크립트를 가지고 있는 게임 오브젝트의 컬라이더에 다른 컬라이더가 충돌했을 때 실행)
     /// </summary>
@@ -49,7 +54,20 @@ public class Shoot : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log($"OnCollisionEnter2D : {collision.gameObject.name}");
-        Destroy(this.gameObject);       
+
+        if (!isOnDestroy)
+        {
+            isOnDestroy = true;
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                hit.transform.parent = null;
+                hit.transform.position = collision.contacts[0].point;
+                //hit.transform.position = collision.contacts[0].normal; // 노멀 벡터 : 특정 평면에 수직인 벡터. 외적을 통해 구할 수 있다.
+                // 노멀 벡터를 이용해 반사를 계산할 수 있다. -> 빛과 그림자. 물리 반사 등을 계산하는데 필수.
+                hit.SetActive(true);
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     /// <summary>

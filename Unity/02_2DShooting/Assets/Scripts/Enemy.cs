@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     public float lifeTime = 10.0f;
     Rigidbody2D rigid = null;
 
+    public GameObject explosion = null;
+
+    public int broken_score = 5;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -42,7 +46,12 @@ public class Enemy : MonoBehaviour
     {
         //if (collision.gameObject.CompareTag("Bullet"))   // 해시 (Hash) -> 유니크한 요약본을 만들어준다.
         //{
-            Destroy(this.gameObject);
+        explosion.transform.parent = null;
+        explosion.SetActive(true);
+        Destroy(this.gameObject);
+
+        GameManager.Inst.Score += broken_score;
+
         //}
     }
 }

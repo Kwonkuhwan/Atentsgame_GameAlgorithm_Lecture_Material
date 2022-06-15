@@ -13,8 +13,8 @@ public class EnemySpawner : MonoBehaviour
     public float randomRange = 8.0f;
     public Color GizmosColor = Color.white;
 
-    Vector3 startPosition = Vector3.zero;
-    Vector3 endPosition = Vector3.zero;
+    protected Vector3 startPosition = Vector3.zero;
+    protected Vector3 endPosition = Vector3.zero;
 
     protected WaitForSeconds waitSecond = null;
 

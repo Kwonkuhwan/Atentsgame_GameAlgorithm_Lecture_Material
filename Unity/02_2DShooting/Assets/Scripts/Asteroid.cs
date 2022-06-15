@@ -13,6 +13,8 @@ public class Asteroid : MonoBehaviour
 
     public Vector3 targetDir = Vector3.zero;
 
+    public int broken_score = 10;
+
     private SpriteRenderer AsteroidRenderer = null;
     private void Awake()
     {
@@ -59,6 +61,7 @@ public class Asteroid : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         SplitAsteroid();
+
         Destroy(this.gameObject);
     }
 
@@ -91,6 +94,7 @@ public class Asteroid : MonoBehaviour
         if(hit_Count <= 0)
         {
             StartCoroutine(SplitCoroutine(hit_splitTime));
+            GameManager.Inst.Score += broken_score;
         }
     }
 
