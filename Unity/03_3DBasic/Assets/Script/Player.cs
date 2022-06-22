@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDead
 {
     // 플레이어 오브젝트는 입력에 따라 움직인다.
     // w : 전진
@@ -36,6 +35,7 @@ public class Player : MonoBehaviour
 
     private bool isJumping = false;
 
+    private bool tryUse = false;
     #endregion
 
     private void Awake()
@@ -56,10 +56,14 @@ public class Player : MonoBehaviour
         actions.Player.SideMove.canceled += OnSideMoveInput;
 
         actions.Player.Jump.performed += OnJumpInput;
+
+        actions.Player.Use.performed += OnUseInput;
     }
 
     private void OnDisable()
     {
+        actions.Player.Use.performed -= OnUseInput;
+
         actions.Player.Jump.performed -= OnJumpInput;
 
         actions.Player.SideMove.canceled -= OnSideMoveInput;
@@ -116,6 +120,46 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Use()
+    {
+        ani.SetTrigger("Use");
+        // 트리거를 어떻게 사용하면 될 것인가?
+
+        tryUse = true;
+    }
+
+    public void UseEnd()
+    {
+        tryUse = false;
+    }
+
+    private void OnUseInput(InputAction.CallbackContext context)
+    {
+        Use();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log("무엇인가가 들어왔다.");
+
+        // 사용이 가능한지 아닌지 물어보기(useable이 null이 아니라면 IUseable인터페이스를 상속 받았기에 사용할 수 있는 오브젝트다)
+
+        if (tryUse)
+        {
+            IUseable useable = other.GetComponentInParent<IUseable>();
+            if (useable != null)
+            {
+                useable.Use();  // 사용할 수 있는 오브젝트라면 사용한다.
+                tryUse = false;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //Debug.Log("무엇인가가 나갔다.");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
@@ -130,5 +174,13 @@ public class Player : MonoBehaviour
         {
             isJumping = true;
         }
+    }
+
+    public void Die()
+    {
+        actions.Player.Disable();
+        rigid.constraints = RigidbodyConstraints.None;
+        rigid.AddForce(Random.insideUnitSphere * 10.0f);
+        ani.SetTrigger("Die");
     }
 }
