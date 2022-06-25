@@ -1,0 +1,13 @@
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.exe
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.deps.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.dev.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.dll
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\bin\Debug\netcoreapp3.1\Test.pdb
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.GeneratedMSBuildEditorConfig.editorconfig
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfoInputs.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfo.cs
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.csproj.CoreCompileInputs.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.dll
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.pdb
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\Test\obj\Debug\netcoreapp3.1\Test.genruntimeconfig.cache

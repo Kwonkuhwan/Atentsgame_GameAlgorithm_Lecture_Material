@@ -26,3 +26,17 @@ D:\게임알고리즘 및 엔진프로그래밍 전문가 양성\Project\Atentsg
 D:\게임알고리즘 및 엔진프로그래밍 전문가 양성\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.dll
 D:\게임알고리즘 및 엔진프로그래밍 전문가 양성\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.pdb
 D:\게임알고리즘 및 엔진프로그래밍 전문가 양성\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.genruntimeconfig.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.exe
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.deps.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.runtimeconfig.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.runtimeconfig.dev.json
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.dll
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\bin\Debug\netcoreapp3.1\01_Console.pdb
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.csproj.AssemblyReference.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.GeneratedMSBuildEditorConfig.editorconfig
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.AssemblyInfoInputs.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.AssemblyInfo.cs
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.csproj.CoreCompileInputs.cache
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.dll
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.pdb
+D:\Atentsgame_GameAlgorithm\Project\Atentsgame_GameAlgorithm_Lecture_Material\_Console\01_Console\obj\Debug\netcoreapp3.1\01_Console.genruntimeconfig.cache
