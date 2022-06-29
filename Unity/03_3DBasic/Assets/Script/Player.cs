@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IDead
 {
@@ -182,5 +183,12 @@ public class Player : MonoBehaviour, IDead
         rigid.constraints = RigidbodyConstraints.None;
         rigid.AddForce(Random.insideUnitSphere * 10.0f);
         ani.SetTrigger("Die");
+        StartCoroutine(Restart());  // 죽을 때 씬 재시작 코루틴 실행
+    }
+
+    private IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(5.0f);   // 5초 기다리기
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);   // 현재 씬 다시 불러오기
     }
 }

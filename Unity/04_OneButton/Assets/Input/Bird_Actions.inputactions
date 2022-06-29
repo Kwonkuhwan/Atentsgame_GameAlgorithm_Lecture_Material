@@ -1,0 +1,51 @@
+{
+    "name": "Bird_Actions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "f4df0c50-19c3-4ccc-bb02-cd0afed99137",
+            "actions": [
+                {
+                    "name": "Tab",
+                    "type": "Button",
+                    "id": "788aaad8-e572-4af8-8332-e44d63776a0d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "95b21fdc-46c4-4107-8d4f-815831ee46ed",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyboardMouse",
+            "bindingGroup": "KeyboardMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
