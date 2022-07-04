@@ -371,10 +371,13 @@
 "Assets/Input/Bird_Actions.cs"
 "Assets/Scripts/BackgroundScrolling.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/HighScoreBoard.cs"
 "Assets/Scripts/ImageNumber.cs"
 "Assets/Scripts/Pipe.cs"
 "Assets/Scripts/PipeRotator.cs"
 "Assets/Scripts/PlayerBird.cs"
+"Assets/Scripts/SaveData.cs"
+"Assets/Scripts/ScoreBoard.cs"
 -langversion:9.0
 
 /deterministic

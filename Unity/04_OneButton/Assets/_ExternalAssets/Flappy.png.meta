@@ -188,7 +188,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_4
+      name: Middle4
       rect:
         serializedVersion: 2
         x: 502
@@ -209,7 +209,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_5
+      name: Middle5
       rect:
         serializedVersion: 2
         x: 502
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_7
+      name: Middle6
       rect:
         serializedVersion: 2
         x: 505
@@ -293,7 +293,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_9
+      name: Middle7
       rect:
         serializedVersion: 2
         x: 505
@@ -335,7 +335,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_11
+      name: GameOver
       rect:
         serializedVersion: 2
         x: 395
@@ -440,7 +440,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_30
+      name: Start
       rect:
         serializedVersion: 2
         x: 354
@@ -632,8 +632,8 @@ TextureImporter:
       name: Big7
       rect:
         serializedVersion: 2
-        x: 305
-        y: 311
+        x: 306
+        y: 310
         width: 12
         height: 18
       alignment: 8
@@ -713,7 +713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_43
+      name: Middle9
       rect:
         serializedVersion: 2
         x: 311
@@ -755,7 +755,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_45
+      name: Middle8
       rect:
         serializedVersion: 2
         x: 293
@@ -776,11 +776,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_46
+      name: ScoreBoard
       rect:
         serializedVersion: 2
         x: 3
-        y: 196
+        y: 197
         width: 113
         height: 57
       alignment: 0
@@ -797,7 +797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_47
+      name: Madal_Platinum
       rect:
         serializedVersion: 2
         x: 121
@@ -818,7 +818,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_48
+      name: Madal_Glod
       rect:
         serializedVersion: 2
         x: 121
@@ -860,7 +860,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_50
+      name: Middle0
       rect:
         serializedVersion: 2
         x: 137
@@ -1007,7 +1007,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_58
+      name: Samll2
       rect:
         serializedVersion: 2
         x: 138
@@ -1049,7 +1049,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_61
+      name: Samll4
       rect:
         serializedVersion: 2
         x: 138
@@ -1070,7 +1070,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_62
+      name: Samll5
       rect:
         serializedVersion: 2
         x: 138
@@ -1133,7 +1133,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_65
+      name: Samll6
       rect:
         serializedVersion: 2
         x: 138
@@ -1154,7 +1154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_66
+      name: Samll7
       rect:
         serializedVersion: 2
         x: 138
@@ -1196,7 +1196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_68
+      name: Samll8
       rect:
         serializedVersion: 2
         x: 138
@@ -1217,7 +1217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_69
+      name: Samll9
       rect:
         serializedVersion: 2
         x: 138
@@ -1238,7 +1238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_70
+      name: Madal_Silver
       rect:
         serializedVersion: 2
         x: 112
@@ -1280,7 +1280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_72
+      name: Madal_Bronze
       rect:
         serializedVersion: 2
         x: 112
@@ -1301,12 +1301,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_73
+      name: Middle1
       rect:
         serializedVersion: 2
-        x: 139
+        x: 138
         y: 25
-        width: 5
+        width: 7
         height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1406,7 +1406,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_78
+      name: Middle2
       rect:
         serializedVersion: 2
         x: 137
@@ -1427,7 +1427,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_79
+      name: New
       rect:
         serializedVersion: 2
         x: 112
@@ -1448,7 +1448,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_80
+      name: Middle3
       rect:
         serializedVersion: 2
         x: 131
@@ -1469,7 +1469,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_12
+      name: Samll0
       rect:
         serializedVersion: 2
         x: 138
@@ -1490,7 +1490,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_13
+      name: Samll1
       rect:
         serializedVersion: 2
         x: 138
@@ -1511,7 +1511,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flappy_19
+      name: Samll3
       rect:
         serializedVersion: 2
         x: 138
@@ -1584,47 +1584,43 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Flappy_80: -1857578206
-      Flappy_69: -2098333052
+      Madal_Glod: -1032123241
+      Samll4: -1779936744
       Flappy_67: -1970840347
-      Flappy_19: -2036520401
+      Middle7: -255219912
+      Samll3: -2036520401
+      Middle0: 1082561956
       Flappy_16: -269888333
-      Flappy_73: 580778131
       Flappy_17: 1011675412
       Flappy_22: -1047854546
-      Flappy_11: -390131720
+      Middle9: -570647789
+      Background1: 336150752
+      Middle3: -1857578206
       Flappy_6: -516278533
       Bird1_2: -1809920377
-      Flappy_72: -806421929
+      Middle2: -1451407986
       Flappy_56: -176433019
-      Flappy_79: 152639756
+      Samll7: 872848658
       Flappy_59: 1860830219
       Flappy_23: 1295699435
+      Middle5: -232181738
       Big9: 1428040693
       Flappy_21: 2096060657
       Big2: -2046189260
-      Flappy_9: -255219912
-      Flappy_43: -570647789
-      Flappy_61: -1779936744
-      Flappy_62: 1766401757
-      Flappy_65: 1285539115
+      Test_Bird: -139309844
       Background_Ground: -1061502816
       Flappy_15: 1150764297
-      Flappy_70: -1032123241
       Big3: 1413498518
-      Test_Bird: -139309844
       Flappy_57: -308232104
-      Flappy_47: 82879778
+      Madal_Bronze: -806421929
+      Madal_Platinum: 1119591961
+      Start: -1340580496
       Big0: 104894359
-      Flappy_12: 770721578
-      Flappy_7: 1876550909
-      Flappy_50: 1082561956
-      Flappy_30: -1340580496
+      Middle4: 2143287795
       Flappy_51: 1804000472
-      Flappy_13: 22379598
       Flappy_29: 892316964
+      Samll9: -2098333052
       Flappy_31: 739265077
-      Flappy_48: 1119591961
       Flappy_24: -1933792632
       Flappy_25: -1545758425
       Big6: 1468477368
@@ -1632,39 +1628,44 @@ TextureImporter:
       Flappy_64: 761530129
       Flappy_77: -1770887752
       Flappy_44: -453163364
-      Flappy_46: -1111877421
+      Samll1: 22379598
       Big1: -1169029114
-      Flappy_78: -1451407986
+      Middle8: 1272097856
       Flappy_32: -241744158
       Big4: -1819699386
-      Flappy_5: -232181738
       Big7: 1102765861
+      Samll2: -1163594292
+      Madal_Silver: -1032123241
+      ScoreBoard: -1111877421
+      Samll6: 1285539115
       Flappy_26: 91937429
       Pipe_Bottom: 1244592488
+      GameOver: -390131720
+      Middle6: 1876550909
       Flappy_18: 2020704978
+      Middle1: 580778131
       Flappy_10: -247901321
       Bird1_1: 2110203323
+      New: 152639756
+      Samll5: 1766401757
       Flappy_8: -998359420
       Flappy_20: -1812054933
       Flappy_55: 405128852
-      Flappy_58: -1163594292
       Flappy_42: -704077931
       Flappy_33: 59158120
       Flappy_63: 1741695734
-      Flappy_4: 2143287795
-      Flappy_68: -1456379726
-      Flappy_66: 872848658
-      Big8: -1368523546
-      Pipe_Top: -1131306328
-      Background0: 424394457
-      Bird1_3: -1995165517
+      Samll8: -1456379726
+      Samll0: 770721578
+      Flappy_0: -1900646255
       Flappy_3: 210584289
-      Background1: 336150752
-      Flappy_49: 92400862
       Big5: -1718941137
-      Flappy_28: 1863973250
-      Flappy_45: 1272097856
       Flappy_27: 2093964624
+      Pipe_Top: -1131306328
+      Bird1_3: -1995165517
+      Big8: -1368523546
+      Background0: 424394457
+      Flappy_28: 1863973250
+      Flappy_49: 92400862
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
