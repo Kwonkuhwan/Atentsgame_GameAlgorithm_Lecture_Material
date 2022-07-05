@@ -25,9 +25,7 @@ public class RandomIdleSelect : StateMachineBehaviour
         waitTimes--;
         if (waitTimes < 0)
         {
-            int s = RandomSelect();
-            Debug.Log(s);
-            animator.SetInteger("IdleSelect", s);
+            animator.SetInteger("IdleSelect", RandomSelect());
             waitTimes = Random.Range(1, 4);
         }
     }

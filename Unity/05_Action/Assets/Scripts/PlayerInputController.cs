@@ -50,14 +50,22 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.Move.performed += OnMove;
         actions.Player.Move.canceled += OnMove;
         actions.Player.MoveModeChange.performed += OnMoveModeChange;
+        actions.Player.Attack.performed += OnAttack;
     }
 
     private void OnDisable()
     {
+        actions.Player.Attack.performed -= OnAttack;
         actions.Player.MoveModeChange.performed -= OnMoveModeChange;
         actions.Player.Move.canceled -= OnMove;
         actions.Player.Move.performed -= OnMove;
         actions.Player.Disable();
+    }
+
+    private void OnAttack(InputAction.CallbackContext obj)
+    {
+        ani.SetFloat("ComboState", Mathf.Repeat(ani.GetCurrentAnimatorStateInfo(0).normalizedTime, 1.0f));
+        ani.SetTrigger("Attack");
     }
 
     /// <summary>
