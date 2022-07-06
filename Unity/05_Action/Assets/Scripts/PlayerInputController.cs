@@ -65,6 +65,7 @@ public class PlayerInputController : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext obj)
     {
         ani.SetFloat("ComboState", Mathf.Repeat(ani.GetCurrentAnimatorStateInfo(0).normalizedTime, 1.0f));
+        ani.ResetTrigger("Attack");
         ani.SetTrigger("Attack");
     }
 

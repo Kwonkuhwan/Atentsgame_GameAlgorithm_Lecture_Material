@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\FindWeapon.cs" />
     <Compile Include="Assets\Scripts\AnimationStateMachine\ArmsNonEquip.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
+    <Compile Include="Assets\Scripts\AttackState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

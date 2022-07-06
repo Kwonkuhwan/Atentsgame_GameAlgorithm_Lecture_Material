@@ -349,6 +349,7 @@
 "Assets/Input/PlayerInputActions.cs"
 "Assets/Scripts/AnimationStateMachine/ArmsNonEquip.cs"
 "Assets/Scripts/AnimationStateMachine/RandomIdleSelect.cs"
+"Assets/Scripts/AttackState.cs"
 "Assets/Scripts/FindShield.cs"
 "Assets/Scripts/FindWeapon.cs"
 "Assets/Scripts/FollowCamera.cs"
