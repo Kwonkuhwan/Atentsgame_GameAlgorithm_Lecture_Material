@@ -67,6 +67,8 @@ public class PlayerInputController : MonoBehaviour
         ani.SetFloat("ComboState", Mathf.Repeat(ani.GetCurrentAnimatorStateInfo(0).normalizedTime, 1.0f));
         ani.ResetTrigger("Attack");
         ani.SetTrigger("Attack");
+
+        //GetComponent<Player>().TurnOnAura(true);
     }
 
     /// <summary>
@@ -75,6 +77,7 @@ public class PlayerInputController : MonoBehaviour
     /// <param name="context">입력 관련 정보</param>
     private void OnMove(InputAction.CallbackContext context)
     {
+        //GetComponent<Player>().TurnOnAura(false);
         // 입력 받은 값 저장
         Vector2 input = context.ReadValue<Vector2>();
         //Debug.Log(input);

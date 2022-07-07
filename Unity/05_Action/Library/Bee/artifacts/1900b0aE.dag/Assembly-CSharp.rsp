@@ -350,12 +350,14 @@
 "Assets/Scripts/AnimationStateMachine/ArmsNonEquip.cs"
 "Assets/Scripts/AnimationStateMachine/RandomIdleSelect.cs"
 "Assets/Scripts/AttackState.cs"
+"Assets/Scripts/Effect/MouseFollow.cs"
 "Assets/Scripts/FindShield.cs"
 "Assets/Scripts/FindWeapon.cs"
 "Assets/Scripts/FollowCamera.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/PlayerInputController.cs"
+"Assets/Scripts/TestWeaponSwing.cs"
 -langversion:9.0
 
 /deterministic

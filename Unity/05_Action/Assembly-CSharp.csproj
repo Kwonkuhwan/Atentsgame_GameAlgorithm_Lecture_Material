@@ -60,12 +60,14 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\FindShield.cs" />
+    <Compile Include="Assets\Scripts\Effect\MouseFollow.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\AttackState.cs" />
     <Compile Include="Assets\Scripts\PlayerInputController.cs" />
     <Compile Include="Assets\Scripts\FindWeapon.cs" />
     <Compile Include="Assets\Scripts\AnimationStateMachine\ArmsNonEquip.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
-    <Compile Include="Assets\Scripts\AttackState.cs" />
+    <Compile Include="Assets\Scripts\TestWeaponSwing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
