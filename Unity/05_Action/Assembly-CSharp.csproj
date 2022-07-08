@@ -58,16 +58,18 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AnimationStateMachine\RandomIdleSelect.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\FindShield.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\FindShield.cs" />
     <Compile Include="Assets\Scripts\Effect\MouseFollow.cs" />
+    <Compile Include="Assets\Scripts\TestWeaponSwing.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
-    <Compile Include="Assets\Scripts\AttackState.cs" />
-    <Compile Include="Assets\Scripts\PlayerInputController.cs" />
-    <Compile Include="Assets\Scripts\FindWeapon.cs" />
+    <Compile Include="Assets\Scripts\AnimationStateMachine\AttackState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInputController.cs" />
+    <Compile Include="Assets\Scripts\Enems.cs" />
+    <Compile Include="Assets\Scripts\Player\FindWeapon.cs" />
     <Compile Include="Assets\Scripts\AnimationStateMachine\ArmsNonEquip.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
-    <Compile Include="Assets\Scripts\TestWeaponSwing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
