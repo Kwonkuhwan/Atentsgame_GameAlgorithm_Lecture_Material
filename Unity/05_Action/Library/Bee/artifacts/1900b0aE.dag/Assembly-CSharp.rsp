@@ -381,6 +381,7 @@
 "Assets/Scripts/Character/Player/FindWeapon.cs"
 "Assets/Scripts/Character/Player/Player.cs"
 "Assets/Scripts/Character/Player/PlayerInputController.cs"
+"Assets/Scripts/Character/Player/Weapon.cs"
 "Assets/Scripts/Effect/MouseFollow.cs"
 "Assets/Scripts/Enems.cs"
 "Assets/Scripts/FollowCamera.cs"

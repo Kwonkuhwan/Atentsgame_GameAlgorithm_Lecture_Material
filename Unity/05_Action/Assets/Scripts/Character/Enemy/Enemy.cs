@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
     public float HP 
     { 
         get => hp;
-        set
+        private set
         {
             hp = Mathf.Clamp(value, 0.0f, maxHP);
             onHealthChage?.Invoke();
@@ -262,11 +262,12 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
                 attackCoolTime = attackSpeed;
                 break;
             case EnemyState.Dead:
+                ani.SetBool("Dead", true);
+                ani.SetTrigger("Die");
                 isDead = true;
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
                 HP = 0;
-                ani.SetTrigger("Die");
                 break;
             default:
                 break;
