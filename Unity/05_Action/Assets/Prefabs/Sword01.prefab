@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7807732043120016115}
   - component: {fileID: 774659750122898478}
   - component: {fileID: 2315549724653022375}
+  - component: {fileID: 4150968107255236517}
   m_Layer: 0
   m_Name: Sword01
   m_TagString: Untagged
@@ -4865,3 +4866,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!136 &4150968107255236517
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600290467444546342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.03
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
