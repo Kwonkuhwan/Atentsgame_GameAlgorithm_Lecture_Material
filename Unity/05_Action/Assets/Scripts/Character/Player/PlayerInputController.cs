@@ -37,11 +37,14 @@ public class PlayerInputController : MonoBehaviour
     // 애니메이터
     private Animator ani = null;
 
+    private Player player = null;
+
     private void Awake()
     {
         actions = new();
         controller = GetComponent<CharacterController>();
         ani = GetComponent<Animator>();
+        player = GetComponent<Player>();
     }
 
     private void OnEnable()
@@ -51,10 +54,12 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.Move.canceled += OnMove;
         actions.Player.MoveModeChange.performed += OnMoveModeChange;
         actions.Player.Attack.performed += OnAttack;
+        actions.Player.LockOn.performed += OnLockOn;
     }
 
     private void OnDisable()
     {
+        actions.Player.LockOn.performed -= OnLockOn;
         actions.Player.Attack.performed -= OnAttack;
         actions.Player.MoveModeChange.performed -= OnMoveModeChange;
         actions.Player.Move.canceled -= OnMove;
@@ -121,6 +126,11 @@ public class PlayerInputController : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if(player.lockOnTarget != null)
+        {
+            targetRotation = Quaternion.LookRotation(player.lockOnTarget.position - transform.position);
+        }
+
         // 이동 입력 확인
         if (inputDir.sqrMagnitude > 0.0f)
         {
@@ -149,5 +159,16 @@ public class PlayerInputController : MonoBehaviour
             // 입력이 없으면 idle 애니메이션으로 변경
             ani.SetFloat("Speed", 0.0f);
         }
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
+
+    /// <summary>
+    /// 락온 버튼이 눌러졌을 때 실행될 함수
+    /// </summary>
+    /// <param name="_"></param>
+    private void OnLockOn(InputAction.CallbackContext _)
+    {
+        player.LockOnToggle();
+    }
+
 }

@@ -587,7 +587,6 @@ GameObject:
   - component: {fileID: 1262746968013367757}
   - component: {fileID: 7849743006700376302}
   - component: {fileID: 7849743006700376297}
-  - component: {fileID: 7849743006700376307}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -668,18 +667,6 @@ MonoBehaviour:
   runSpeed: 6
   walkSpeed: 3
   turnSpeed: 5
---- !u!114 &7849743006700376307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109730253819414061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a21dbc737f108d4fa7950efa281ffae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2358239108630774981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +2931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80221d49e70ccd4da0d54619e5b15c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
 --- !u!4 &5452733326366981379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8940083079624884636, guid: 67d956be037fd994dbe958d87ac71428, type: 3}

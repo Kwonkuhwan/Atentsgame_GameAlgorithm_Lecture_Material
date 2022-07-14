@@ -380,6 +380,7 @@
 "Assets/Scripts/Character/Player/FindShield.cs"
 "Assets/Scripts/Character/Player/FindWeapon.cs"
 "Assets/Scripts/Character/Player/Player.cs"
+"Assets/Scripts/Character/Player/PlayerHP_Bar.cs"
 "Assets/Scripts/Character/Player/PlayerInputController.cs"
 "Assets/Scripts/Character/Player/Weapon.cs"
 "Assets/Scripts/Effect/MouseFollow.cs"

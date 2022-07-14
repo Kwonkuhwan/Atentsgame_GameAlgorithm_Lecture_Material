@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
 
     // Chase 용 ---------------------------------------------------------------
     private float sightRange = 10.0f;
+    private float closeSightRange = 2.5f;
     private Vector3 targetPosition = new();
     private WaitForSeconds oneSecond = new WaitForSeconds(1);
     private IEnumerator repeatChase;
@@ -26,8 +27,10 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
     // -----------------------------------------------------------------------
 
     // Attack 용 -------------------------------------------------------------
-    float attackCoolTime = 1.0f;
-    float attackSpeed = 1.0f;
+    private float attackCoolTime = 1.0f;
+    private float attackSpeed = 1.0f;
+
+    private IBattle attackTarget;
     // -----------------------------------------------------------------------
 
     private EnemyState state = EnemyState.Idle;
@@ -35,8 +38,10 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
     private Animator ani = null;
 
     // IHealth 용 -------------------------------------------------------------
-    public float hp = 100.0f;
+    private float hp = 100.0f;
     private float maxHP = 100.0f;
+
+    public System.Action OnDead;
 
     public float HP 
     { 
@@ -164,6 +169,12 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
                     result = true;
                 }
             }
+
+            if (!result && (pos - transform.position).sqrMagnitude < closeSightRange * closeSightRange)
+            {
+                targetPosition = pos;
+                result = true;
+            }
         }
 
         return result;
@@ -190,9 +201,12 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
     private void Attack_Update()
     {
         attackCoolTime -= Time.deltaTime;
-        if(attackCoolTime < 0.0f)
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(attackTarget.transform.position - transform.position), 0.1f);
+        if (attackCoolTime < 0.0f)
         {
             ani.SetTrigger("Attack");
+            Attack(attackTarget);
             attackCoolTime = attackSpeed;
         }
     }
@@ -201,6 +215,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
     {
         if (other.gameObject == GameManager.Inst.MainPlayer.gameObject)
         {
+            attackTarget = other.GetComponent<IBattle>();
             ChangeState(EnemyState.Attack);
             return;
         }
@@ -216,6 +231,8 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
 
     private void ChangeState(EnemyState newState)
     {
+        if (isDead) return;
+
         // 이전 상태를 나가면서 해야할 일들
         switch (state)
         {
@@ -231,6 +248,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
                 break;
             case EnemyState.Attack:
                 agent.isStopped = true;
+                attackTarget = null;
                 break;
             case EnemyState.Dead:
                 isDead = false;
@@ -262,12 +280,15 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
                 attackCoolTime = attackSpeed;
                 break;
             case EnemyState.Dead:
+                OnDead?.Invoke();
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 ani.SetBool("Dead", true);
                 ani.SetTrigger("Die");
                 isDead = true;
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
                 HP = 0;
+                StartCoroutine(DeadEffect());
                 break;
             default:
                 break;
@@ -275,6 +296,28 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
 
         state = newState;
         ani.SetInteger("EnemyState", (int)state);
+    }
+
+    IEnumerator DeadEffect()
+    {
+        ParticleSystem ps = GetComponentInChildren<ParticleSystem>();
+        ps.Play();
+        ps.gameObject.transform.parent = null;
+
+        EnemyHP_Bar hpBar = GetComponentInChildren<EnemyHP_Bar>();
+        hpBar.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(3.0f);
+        Collider[] colliders = GetComponents<Collider>();
+        foreach(var col in colliders)
+        {
+            col.enabled = false;
+        }
+        agent.enabled = false;
+        Rigidbody rigid = GetComponent<Rigidbody>();
+        rigid.isKinematic = false;
+        rigid.drag = 20.0f;
+        Destroy(this);
     }
 
     private void OnDrawGizmos()
@@ -289,6 +332,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
         {
             Handles.color = Color.red;
         }
+        Handles.DrawWireDisc(transform.position, transform.up, closeSightRange);
 
         Vector3 forward = transform.forward * sightRange;
         Quaternion q1 = Quaternion.Euler(0.5f * sightAngle * transform.up);
@@ -333,7 +377,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
         if(target != null)
         {
             float damage = AttackPower;
-            if(Random.Range(0.0f, 1) < criticalRate)
+            if(Random.Range(0.0f, 1.0f) < criticalRate)
             {
                 damage *= 2.0f;
             }

@@ -9,7 +9,14 @@ using System;
 public class GameManager : MonoBehaviour
 {
     private Player player = null;
+    private ItemDataManager itemData;
+
     public Player MainPlayer { get => player; }
+
+    public ItemDataManager ItemData
+    {
+        get => itemData;
+    }
 
     // static 맴버 변수 : 주소가 고정 => 이 클래스의 모든 인스턴스는 같은 값을 가진다.
     private static GameManager instance = null;
