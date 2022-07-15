@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private void Initialize()
     {
+        itemData = GetComponent<ItemDataManager>();
+
         player = FindObjectOfType<Player>();
     }
 }

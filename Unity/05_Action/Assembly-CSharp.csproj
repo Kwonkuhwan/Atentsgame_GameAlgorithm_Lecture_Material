@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Test\Test_Monster.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemFactory.cs" />
+    <Compile Include="Assets\Scripts\Item\Item.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\RandomIdleSelect.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\IHealth.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Weapon.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Assets\Scripts\Test\TestWeaponSwing.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\AttackState.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemDataManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerInputController.cs" />
@@ -85,13 +89,9 @@
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\ArmsNonEquip.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
-    <Compile Include="Assets\Scripts\StopAura.cs" />
-    <Compile Include="Assets\Scripts\Item\ItemFactory.cs" />
-    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData.cs" />
-    <Compile Include="Assets\Scripts\Item\Item.cs" />
-    <Compile Include="Assets\Scripts\Item\ItemDataManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />

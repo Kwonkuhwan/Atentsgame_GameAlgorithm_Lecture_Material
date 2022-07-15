@@ -13,5 +13,10 @@ public class Test_Monster : MonoBehaviour
         {
             enemy.TakeDamage(20);
         }
+
+        if(Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            ItemFactory.MakeItem(ItemIDCode.Coin_Gold);
+        }
     }
 }

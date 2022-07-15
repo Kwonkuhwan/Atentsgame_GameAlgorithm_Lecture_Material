@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 2_CoinGold
   m_EditorClassIdentifier: 
   id: 2
-  itemName: CoinGold
-  prefab: {fileID: 0}
+  itemName: "\uAE08\uD654"
+  prefab: {fileID: 6587807387649779142, guid: 623b75463f0b6d347af9de66a00de74f, type: 3}
