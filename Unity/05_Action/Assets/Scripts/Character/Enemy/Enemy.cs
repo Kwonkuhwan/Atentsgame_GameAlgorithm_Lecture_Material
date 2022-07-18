@@ -280,15 +280,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
                 attackCoolTime = attackSpeed;
                 break;
             case EnemyState.Dead:
-                OnDead?.Invoke();
-                gameObject.layer = LayerMask.NameToLayer("Default");
-                ani.SetBool("Dead", true);
-                ani.SetTrigger("Die");
-                isDead = true;
-                agent.isStopped = true;
-                agent.velocity = Vector3.zero;
-                HP = 0;
-                StartCoroutine(DeadEffect());
+                DiePresent();
                 break;
             default:
                 break;
@@ -296,6 +288,33 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
 
         state = newState;
         ani.SetInteger("EnemyState", (int)state);
+    }
+
+    private void DiePresent()
+    {
+        OnDead?.Invoke();
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        ani.SetBool("Dead", true);
+        ani.SetTrigger("Die");
+        isDead = true;
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        HP = 0;
+        ItemDrop();
+        StartCoroutine(DeadEffect());
+    }
+
+    private void ItemDrop()
+    {
+        float rand = Random.Range(0.0f, 1.0f);
+        GameObject obj = null;
+
+        if (rand < 0.1f)
+            obj = ItemFactory.MakeItem(ItemIDCode.Coin_Gold, transform.position, true);
+        else if(rand < 0.3f)
+            obj = ItemFactory.MakeItem(ItemIDCode.Coin_Silver, transform.position, true);
+        else
+            obj = ItemFactory.MakeItem(ItemIDCode.Coin_Copper, transform.position, true);
     }
 
     IEnumerator DeadEffect()

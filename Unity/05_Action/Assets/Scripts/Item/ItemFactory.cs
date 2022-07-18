@@ -26,4 +26,19 @@ public class ItemFactory
 
         return obj;                                    // 생성완료된 데이터 리턴
     }
+
+    public static GameObject MakeItem(ItemIDCode code, Vector3 position, bool randomNoise = false)
+    {
+        GameObject obj = MakeItem(code);
+        if(randomNoise)
+        {
+            Vector2 noise = Random.insideUnitCircle * 0.5f;
+            position.x += noise.x;
+            position.z += noise.y;
+        }
+
+        obj.transform.position = position;
+
+        return obj;
+    }
 }
