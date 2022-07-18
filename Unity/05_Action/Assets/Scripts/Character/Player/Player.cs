@@ -51,6 +51,12 @@ public class Player : MonoBehaviour, IHealth, IBattle
     float lockOnRange = 5.0f;
     //--------------------------------------------------------------------------------
 
+    //Item ---------------------------------------------------------------------------
+    private float itemPickupRange = 3.0f;       // 아이템 줍는 범위
+    private int money = 0;                      // 플레이어의 소지 금액
+    public int Money { get => money; }    
+    //--------------------------------------------------------------------------------
+
     private void Awake()
     {
         ani = GetComponent<Animator>();
@@ -71,12 +77,12 @@ public class Player : MonoBehaviour, IHealth, IBattle
     {
         if (turnOn)
         {
-            Debug.Log("오라 켜기");
+            //Debug.Log("오라 켜기");
             ps.Play();
         }
         else
         {
-            Debug.Log("오라 끄기");
+            //Debug.Log("오라 끄기");
             ps.Stop();
         }
     }
@@ -176,6 +182,18 @@ public class Player : MonoBehaviour, IHealth, IBattle
         lockOnTarget = null;
         lockOnEffect.transform.parent = null;
         lockOnEffect.SetActive(false);
+    }
+
+    public void ItemPickUp()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, itemPickupRange, LayerMask.GetMask("Item"));
+        foreach(var col in cols)
+        {
+            Item item = col.GetComponent<Item>();
+            money += (int)item.data.value;
+            Destroy(col.gameObject);
+        }
+        //Debug.Log($"{money}");
     }
 
     private void OnDrawGizmos()

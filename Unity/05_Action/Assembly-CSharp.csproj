@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Test\Test_Monster.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemRotator.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Scripts\Item\ItemFactory.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
@@ -77,7 +78,7 @@
     <Compile Include="Assets\Scripts\Character\Player\FindShield.cs" />
     <Compile Include="Assets\Scripts\Effect\MouseFollow.cs" />
     <Compile Include="Assets\Scripts\Test\TestWeaponSwing.cs" />
-    <Compile Include="Assets\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\AttackState.cs" />
     <Compile Include="Assets\Scripts\Item\ItemDataManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
-    <Compile Include="Assets\Scripts\Item\ItemRotator.cs" />
+    <Compile Include="Assets\Scripts\Camera\MinimapCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />

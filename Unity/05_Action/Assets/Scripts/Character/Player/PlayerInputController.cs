@@ -55,10 +55,12 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.MoveModeChange.performed += OnMoveModeChange;
         actions.Player.Attack.performed += OnAttack;
         actions.Player.LockOn.performed += OnLockOn;
+        actions.Player.Pickup.performed += OnPickUp;
     }
 
     private void OnDisable()
     {
+        actions.Player.Pickup.performed -= OnPickUp;
         actions.Player.LockOn.performed -= OnLockOn;
         actions.Player.Attack.performed -= OnAttack;
         actions.Player.MoveModeChange.performed -= OnMoveModeChange;
@@ -171,4 +173,8 @@ public class PlayerInputController : MonoBehaviour
         player.LockOnToggle();
     }
 
+    private void OnPickUp(InputAction.CallbackContext obj)
+    {
+        player.ItemPickUp();
+    }
 }

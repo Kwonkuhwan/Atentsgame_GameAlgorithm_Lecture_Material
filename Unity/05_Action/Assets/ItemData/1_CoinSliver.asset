@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 1
   itemName: "\uC740\uD654"
   prefab: {fileID: 1123651714988032638, guid: 056615d8e5acdd2489f94c71b53ce673, type: 3}
+  value: 10
