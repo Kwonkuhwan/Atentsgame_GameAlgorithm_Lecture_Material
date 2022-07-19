@@ -398,6 +398,7 @@
 "Assets/Scripts/Item/ScriptableObject/ItemData.cs"
 "Assets/Scripts/StopAura.cs"
 "Assets/Scripts/Test/TestWeaponSwing.cs"
+"Assets/Scripts/Test/Test_Inventory.cs"
 "Assets/Scripts/Test/Test_Monster.cs"
 "Assets/_ExternalAssets/JMO Assets/Cartoon FX/Demo/Assets/CFX_AutoStopLoopedEffect.cs"
 "Assets/_ExternalAssets/JMO Assets/Cartoon FX/Demo/Assets/CFX_Demo_New.cs"

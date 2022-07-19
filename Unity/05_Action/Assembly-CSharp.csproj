@@ -97,6 +97,7 @@
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_Inventory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
