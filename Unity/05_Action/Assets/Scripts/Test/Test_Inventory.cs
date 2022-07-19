@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Test_Inventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
+        Inventory inven = new();
+        inven.AddItem(ItemIDCode.Egg);
+        inven.AddItem(ItemIDCode.Egg);
+        inven.AddItem(ItemIDCode.Egg);
+        inven.AddItem(ItemIDCode.Bone);
+        inven.AddItem(ItemIDCode.Bone);
+        inven.AddItem(ItemIDCode.Bone);
+        inven.AddItem(ItemIDCode.Bone);
+        inven.RemoveItem(3);
+        inven.RemoveItem(10);
+        inven.PrintInventory();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        inven.AddItem(ItemIDCode.Egg, 3);
+        inven.AddItem(ItemIDCode.Bone, 3);
+        inven.PrintInventory();
+
+        inven.ClearInventory();
+        inven.PrintInventory();
     }
 }

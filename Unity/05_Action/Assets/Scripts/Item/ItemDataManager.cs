@@ -9,14 +9,14 @@ public class ItemDataManager : MonoBehaviour
 {
     public ItemData[] itemDatas;    // 아이템 종류별 데이터
 
-    public ItemData this[int i]     // 인덱서.
+    public ItemData this[uint i]     // 인덱서.
     {
         get => itemDatas[i];
     }
 
     public ItemData this[ItemIDCode code]   // 인덱서를 통행 편리하게 아이템 종류별 데이터에 접근
     {
-        get => itemDatas[(int)code];
+        get => itemDatas[(uint)code];
     }
 
     public int Length

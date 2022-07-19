@@ -15,5 +15,7 @@ public enum ItemIDCode
 {
     Coin_Copper,
     Coin_Silver,
-    Coin_Gold
+    Coin_Gold,
+    Egg,
+    Bone
 }
