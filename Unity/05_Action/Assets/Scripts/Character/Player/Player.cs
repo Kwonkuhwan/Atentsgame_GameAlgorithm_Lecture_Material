@@ -54,7 +54,20 @@ public class Player : MonoBehaviour, IHealth, IBattle
     //Item ---------------------------------------------------------------------------
     private float itemPickupRange = 3.0f;       // 아이템 줍는 범위
     private int money = 0;                      // 플레이어의 소지 금액
-    public int Money { get => money; }    
+    public int Money 
+    { 
+        get => money;
+        private set
+        {
+            if (money != value)
+            {
+                money = value;
+                OnMoneyChange?.Invoke(money);
+            }
+        }    
+    }
+
+    public System.Action<int> OnMoneyChange;
     //--------------------------------------------------------------------------------
 
     private void Awake()
@@ -67,6 +80,10 @@ public class Player : MonoBehaviour, IHealth, IBattle
         ps = weapon.GetComponentInChildren<ParticleSystem>();
     }
 
+    private void Start()
+    {
+        lockOnEffect = GameObject.Find("LockOnEffect");
+    }
     public void ShowWeapons(bool isShow)
     {
         weapon.SetActive(isShow);
@@ -190,7 +207,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
         foreach(var col in cols)
         {
             Item item = col.GetComponent<Item>();
-            money += (int)item.data.value;
+            Money += (int)item.data.value;
             Destroy(col.gameObject);
         }
         //Debug.Log($"{money}");
