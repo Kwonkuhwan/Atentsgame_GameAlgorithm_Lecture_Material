@@ -59,8 +59,10 @@
     <Compile Include="Assets\Scripts\Test\Test_Monster.cs" />
     <Compile Include="Assets\Scripts\Item\ItemRotator.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_Inventory.cs" />
     <Compile Include="Assets\Scripts\Item\ItemFactory.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\RandomIdleSelect.cs" />
@@ -96,8 +98,7 @@
     <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
-    <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
-    <Compile Include="Assets\Scripts\Test\Test_Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSlotUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
