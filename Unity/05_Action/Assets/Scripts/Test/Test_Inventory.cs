@@ -9,10 +9,12 @@ public class Test_Inventory : MonoBehaviour
         //Test_AddRemoveMove();
 
         Inventory inven = new Inventory();
-        inven.AddItem(ItemIDCode.Egg);
-        inven.AddItem(ItemIDCode.Bone);
+
         InventoryUI invenUI = FindObjectOfType<InventoryUI>();
         invenUI.InitializeInventory(inven);
+
+        inven.AddItem(ItemIDCode.Egg);
+        inven.AddItem(ItemIDCode.Bone);
     }
 
     private static void Test_AddRemoveMove()
