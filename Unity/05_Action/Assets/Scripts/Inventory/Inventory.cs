@@ -6,8 +6,8 @@ public class Inventory
 {
     // 변수 -----------------------------------------------------------------------------
     // ItemSlot : 아이템 칸 하나
-    ItemSlot[] slots = null;
-    ItemSlot tempSlot = null;
+    private ItemSlot[] slots = null;
+    private ItemSlot tempSlot = null;
     // ----------------------------------------------------------------------------------
 
     // 상수 -----------------------------------------------------------------------------
@@ -18,7 +18,8 @@ public class Inventory
     // 프로퍼티 --------------------------------------------------------------------------
     // 인벤토리의 크기
     public int SlotCount { get => slots.Length; }
-    public ItemSlot this[int index] { get => slots[index]; }
+    public ItemSlot this[int index] { get => slots[index]; }    // 인벤토리에서 보이는 슬롯들
+    public ItemSlot TempSlot => tempSlot;                       // 임시 목적의 슬롯
     // ----------------------------------------------------------------------------------
 
     // 함수(주요기능) --------------------------------------------------------------------

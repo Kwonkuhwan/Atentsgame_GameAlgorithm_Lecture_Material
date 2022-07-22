@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Test\Test_Inventory.cs" />
     <Compile Include="Assets\Scripts\Item\ItemFactory.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_UI_Event.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\IHealth.cs" />
+    <Compile Include="Assets\Scripts\Inventory\TempItemSlotUI.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Weapon.cs" />
@@ -99,7 +101,6 @@
     <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
-    <Compile Include="Assets\Scripts\Test\Test_UI_Event.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />

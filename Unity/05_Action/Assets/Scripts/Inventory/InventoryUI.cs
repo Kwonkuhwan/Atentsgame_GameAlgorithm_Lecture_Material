@@ -22,7 +22,8 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     // ----------------------------------------------------------------------------------------
 
     // Item 데이터 -----------------------------------------------------------------------------
-    uint dragStartID;               // 드래그가 시작된 슬롯의 ID
+    private uint dragStartID;               // 드래그가 시작된 슬롯의 ID
+    private TempItemSlotUI tempItemSlotUI;
     // ----------------------------------------------------------------------------------------
 
 
@@ -36,6 +37,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         // 미리 찾아놓기
         slotParent = transform.Find("ItemSlots");
         goldText = transform.Find("Gold").Find("GoldText").GetComponent<TextMeshProUGUI>();
+        tempItemSlotUI = GetComponentInChildren<TempItemSlotUI>();
     }
 
     private void Start()
@@ -82,6 +84,10 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                 slotUIs[i].Initialize((uint)i, inven[i]);
             }
         }
+
+        tempItemSlotUI.SetTempSlot(inven.TempSlot);
+        tempItemSlotUI.Close();
+
         RefreshAllSlots();  // 전체 슬롯 UI 갱신
     }
 
@@ -114,6 +120,10 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
     {
+        //if(eventData.button == PointerEventData.InputButton.Left)
+        //{
+        //    tempItemSlotUI.transform.position = eventData.position;
+        //}
     }
 
     /// <summary>
@@ -134,6 +144,8 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                     // ItemSlotUI 컴포넌트가 있으면 ID기록해 놓기
                     //Debug.Log($"Start SlotID : {slotUI.ID}");
                     dragStartID = slotUI.ID;
+                    tempItemSlotUI.Open();
+                    tempItemSlotUI.itemImage.sprite = slotUI.ItemSlot.SlotItemData.itemIcon;
                 }
             }
         }
@@ -157,8 +169,10 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                     // ItemSlotUI 컴포넌트가 있으면 Inventory.MoveItem 실행
                     //Debug.Log($"End SlotID : {slotUI.ID}");
                     inven.MoveItem(dragStartID, slotUI.ID);
+                    tempItemSlotUI.itemImage.sprite = null;
                 }
             }
+            tempItemSlotUI.Close();
         }
     }
 
