@@ -180,7 +180,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
             }
             
             lockOnTarget = nearest.transform;
-            Debug.Log($"Lock on : { lockOnTarget.name}");
+            //Debug.Log($"Lock on : { lockOnTarget.name}");
 
             lockOnTarget.gameObject.GetComponent<Enemy>().OnDead += LockOff;
 

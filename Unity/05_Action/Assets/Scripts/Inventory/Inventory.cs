@@ -62,7 +62,7 @@ public class Inventory
     {
         bool result = false;
 
-        Debug.Log($"인벤토리에 {data.itemName}을 추가합니다");
+        //Debug.Log($"인벤토리에 {data.itemName}을 추가합니다");
 
         ItemSlot slot = FindEmptySlot();
         if(slot != null)
@@ -70,12 +70,12 @@ public class Inventory
             slot.AssignSlotItem(data);
             result = true;
 
-            Debug.Log($"추가 성공.");
+            //Debug.Log($"추가 성공.");
         }
         else
         {
             // 모든 슬롯에 아이템이 들어있다.
-            Debug.Log($"인벤토리 가득차 실패.");
+            //Debug.Log($"인벤토리 가득차 실패.");
         }
         return result;
     }
@@ -100,11 +100,11 @@ public class Inventory
             slot.AssignSlotItem(data);
             result = true;
 
-            Debug.Log($"추가 성공.");
+            //Debug.Log($"추가 성공.");
         }
         else
         {
-            Debug.Log($"실패 : {index} 슬롯에는 다른 아이템이 들어있습니다.");
+            //Debug.Log($"실패 : {index} 슬롯에는 다른 아이템이 들어있습니다.");
         }
 
         return result;
@@ -119,21 +119,21 @@ public class Inventory
         if (IsValidSlotIndex(slotIndex))
         {
             ItemSlot slot = slots[slotIndex];
-            Debug.Log($"{slot.SlotItemData.itemName}을 삭제합니다.");
+            //Debug.Log($"{slot.SlotItemData.itemName}을 삭제합니다.");
             slot.ClearSlotItem();
-            Debug.Log($"삭제 성공.");
+            //Debug.Log($"삭제 성공.");
             result = true;
         }
         else
         {
-            Debug.Log($"실패 : 잘못된 인덱스 입니다.");
+            //Debug.Log($"실패 : 잘못된 인덱스 입니다.");
         }
         return result;
     }
 
     public void ClearInventory()
     {
-        Debug.Log($"인벤토리 클리어.");
+        //Debug.Log($"인벤토리 클리어.");
         foreach (var slot in slots)
         {
             slot.ClearSlotItem();
@@ -158,7 +158,7 @@ public class Inventory
         if (IsValidAndNotEmptySlot(from) && IsValidSlotIndex(to))
         {
             // from이 valid하고 비어있지 않다. 그리고 to가 valid하다.
-            Debug.Log($"{from}에 있는 {slots[from].SlotItemData.itemName}이 {to}로 이동합니다.");
+            //Debug.Log($"{from}에 있는 {slots[from].SlotItemData.itemName}이 {to}로 이동합니다.");
             tempSlot.AssignSlotItem(slots[from].SlotItemData);
             slots[from].AssignSlotItem(slots[to].SlotItemData);
             slots[to].AssignSlotItem(tempSlot.SlotItemData);
@@ -167,7 +167,7 @@ public class Inventory
         else
         {
             // from이 valid하지 않거나 비어있다 또는 to가 valid하지 않다.
-            Debug.Log($"{from}에서 {to}로 아이템을 옮길 수 없습니다.");
+            //Debug.Log($"{from}에서 {to}로 아이템을 옮길 수 없습니다.");
         }
     }
 
@@ -223,7 +223,7 @@ public class Inventory
                 result += ", ";
         }
         result += "]";
-        Debug.Log(result);
+        //Debug.Log(result);
     }
 
     // ----------------------------------------------------------------------------------

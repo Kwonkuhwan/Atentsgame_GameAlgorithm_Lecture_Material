@@ -7,22 +7,22 @@ public class Test_UI_Event : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 {
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnBeginDrag - {eventData.position}");
+        //Debug.Log($"OnBeginDrag - {eventData.position}");
 
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnDrag - {eventData.position}");
+        //Debug.Log($"OnDrag - {eventData.position}");
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnEndDrag - {eventData.position}");
+        //Debug.Log($"OnEndDrag - {eventData.position}");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log($"OnPointerClick - {eventData.position}");
+        //Debug.Log($"OnPointerClick - {eventData.position}");
     }
 }

@@ -388,6 +388,7 @@
 "Assets/Scripts/Effect/MouseFollow.cs"
 "Assets/Scripts/Enems.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/Inventory/DetailInfoUI.cs"
 "Assets/Scripts/Inventory/Inventory.cs"
 "Assets/Scripts/Inventory/InventoryUI.cs"
 "Assets/Scripts/Inventory/ItemSlot.cs"

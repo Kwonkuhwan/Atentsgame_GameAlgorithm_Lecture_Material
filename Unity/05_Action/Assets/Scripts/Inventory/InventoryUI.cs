@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -19,13 +20,19 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private Transform slotParent;   // 슬롯 생성시 부모가 될 게임 오브젝트의 트랜스폼
 
     private ItemSlotUI[] slotUIs;   // 이 인벤토리가 가지고 있는 슬롯UI들
+
+    private CanvasGroup canvasGroup;
     // ----------------------------------------------------------------------------------------
 
     // Item 데이터 -----------------------------------------------------------------------------
     private uint dragStartID;               // 드래그가 시작된 슬롯의 ID
-    private TempItemSlotUI tempItemSlotUI;
+    private TempItemSlotUI tempItemSlotUI;  // 임시 슬롯(아이템 드래그나 아이템 분리할 때 사용)
     // ----------------------------------------------------------------------------------------
+    private DetailInfoUI detail;
+    public DetailInfoUI Detail => detail;
+    // 상세 정보 UI ----------------------------------------------------------------------------
 
+    // ----------------------------------------------------------------------------------------
 
     // 돈 데이터 -------------------------------------------------------------------------------
     private TextMeshProUGUI goldText;   // 돈 표시용 Text
@@ -35,9 +42,14 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private void Awake()
     {
         // 미리 찾아놓기
+        canvasGroup = GetComponent<CanvasGroup>();
         slotParent = transform.Find("ItemSlots");
         goldText = transform.Find("Gold").Find("GoldText").GetComponent<TextMeshProUGUI>();
         tempItemSlotUI = GetComponentInChildren<TempItemSlotUI>();
+        detail = transform.Find("Detail").GetComponent<DetailInfoUI>();
+
+        Button closeButton = transform.Find("CloseButton").GetComponent<Button>();
+        closeButton.onClick.AddListener(Close);
     }
 
     private void Start()
@@ -47,6 +59,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         RefreshMoney(player.Money);             // 첫 갱신
     }
     // ----------------------------------------------------------------------------------------
+
 
     // 일반 함수들 -----------------------------------------------------------------------------
     /// <summary>
@@ -78,14 +91,13 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         else
         {
             // 크기가 같을 경우 초기화만 진행
-            slotUIs = GetComponentsInChildren<ItemSlotUI>();
+            slotUIs = slotParent.GetComponentsInChildren<ItemSlotUI>();
             for(int i=0; i<inven.SlotCount; i++)
             {
                 slotUIs[i].Initialize((uint)i, inven[i]);
             }
         }
 
-        tempItemSlotUI.SetTempSlot(inven.TempSlot);
         tempItemSlotUI.Close();
 
         RefreshAllSlots();  // 전체 슬롯 UI 갱신
@@ -110,6 +122,33 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         goldText.text = money.ToString("N0");   // Money가 변경될때 실행
     }
+
+    public void InventoryOnOffSwitch()
+    {
+        if(canvasGroup.blocksRaycasts)
+        {
+            Close();
+        }
+        else
+        {
+            Open();
+        }
+    }
+
+    private void Open()
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    private void Close()
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+
     // ----------------------------------------------------------------------------------------
 
     // 이벤트 시스템의 인터페이스 함수들 ---------------------------------------------------------
@@ -144,8 +183,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                     // ItemSlotUI 컴포넌트가 있으면 ID기록해 놓기
                     //Debug.Log($"Start SlotID : {slotUI.ID}");
                     dragStartID = slotUI.ID;
-                    tempItemSlotUI.Open();
-                    tempItemSlotUI.itemImage.sprite = slotUI.ItemSlot.SlotItemData.itemIcon;
+                    tempItemSlotUI.Open(slotUI.ItemSlot);
                 }
             }
         }

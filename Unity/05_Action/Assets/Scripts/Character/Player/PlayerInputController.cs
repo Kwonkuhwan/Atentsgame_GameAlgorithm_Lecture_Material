@@ -39,6 +39,7 @@ public class PlayerInputController : MonoBehaviour
 
     private Player player = null;
 
+
     private void Awake()
     {
         actions = new();
@@ -56,10 +57,11 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.Attack.performed += OnAttack;
         actions.Player.LockOn.performed += OnLockOn;
         actions.Player.Pickup.performed += OnPickUp;
+        actions.Player.InventoryOnOff.performed += OnInventroyOnOff;
     }
-
     private void OnDisable()
     {
+        actions.Player.InventoryOnOff.performed -= OnInventroyOnOff;
         actions.Player.Pickup.performed -= OnPickUp;
         actions.Player.LockOn.performed -= OnLockOn;
         actions.Player.Attack.performed -= OnAttack;
@@ -68,7 +70,7 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.Move.performed -= OnMove;
         actions.Player.Disable();
     }
-
+    
     private void OnAttack(InputAction.CallbackContext obj)
     {
         ani.SetFloat("ComboState", Mathf.Repeat(ani.GetCurrentAnimatorStateInfo(0).normalizedTime, 1.0f));
@@ -176,5 +178,10 @@ public class PlayerInputController : MonoBehaviour
     private void OnPickUp(InputAction.CallbackContext obj)
     {
         player.ItemPickUp();
+    }
+    
+    private void OnInventroyOnOff(InputAction.CallbackContext obj)
+    {
+        GameManager.Inst.InvenUI.InventoryOnOffSwitch();
     }
 }

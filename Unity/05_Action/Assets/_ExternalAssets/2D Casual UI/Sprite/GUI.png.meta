@@ -854,7 +854,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_28
+      name: Detail
       rect:
         serializedVersion: 2
         x: 2166
@@ -1526,7 +1526,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_67
+      name: Close
       rect:
         serializedVersion: 2
         x: 573
@@ -1602,22 +1602,21 @@ TextureImporter:
       GUI_45: 21300080
       GUI_62: 21300110
       GUI_16: 21300032
-      GUI_58: 21300102
+      GUI_8: 21300016
+      Close: 21300120
       GUI_10: 21300020
+      GUI_58: 21300102
       GUI_31: 21300062
       GUI_7: 21300014
-      GUI_8: 21300016
       GUI_60: 21300106
-      GUI_28: 21300056
+      GUI_42: 21300074
       GUI_5: 21300010
       GUI_0: 21300000
       GUI_61: 21300108
-      GUI_42: 21300074
       GUI_34: 21300068
       GUI_32: 21300064
       GUI_33: 21300066
       GUI_19: 21300038
-      GUI_67: 21300120
       GUI_53: 21300092
       GUI_29: 21300058
       GUI_1: 21300002
@@ -1631,6 +1630,7 @@ TextureImporter:
       GUI_36: 21300072
       GUI_35: 21300070
       GUI_59: 21300104
+      Detail: 21300056
       GUI_66: 21300118
       GUI_17: 21300034
       GUI_46: 21300082

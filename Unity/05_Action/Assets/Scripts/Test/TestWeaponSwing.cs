@@ -22,7 +22,7 @@ public class TestWeaponSwing : MonoBehaviour
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Debug.Log("Space!");
+            //Debug.Log("Space!");
             movingStart = true;
             //ani.SetTrigger("Swing");
         }
