@@ -13,8 +13,28 @@ public class Test_Inventory : MonoBehaviour
         InventoryUI invenUI = FindObjectOfType<InventoryUI>();
         invenUI.InitializeInventory(inven);
 
-        inven.AddItem(ItemIDCode.Egg);
-        inven.AddItem(ItemIDCode.Bone);
+        inven.AddItem(ItemIDCode.HealingPotion);
+        inven.AddItem(ItemIDCode.HealingPotion);
+        inven.AddItem(ItemIDCode.HealingPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion);
+        inven.AddItem(ItemIDCode.ManaPotion, 5);
+        inven.AddItem(ItemIDCode.ManaPotion, 5);
+        inven.AddItem(ItemIDCode.ManaPotion, 5);
+
+        //inven.TempRemoveItem(1, 3);
+        //inven.TempToSlot(6);
+        //inven.ClearItem(0);
+        //inven.RemoveItem(5);
+
     }
 
     private static void Test_AddRemoveMove()

@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "InventoryOnOff",
-                    "type": "Button",
-                    "id": "84b3d507-42c4-4d65-91fb-18ac74936ada",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -159,10 +150,27 @@
                     "action": "Pickup",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "ShortCut",
+            "id": "4e4d62e3-a745-4877-be4d-d26e7a34dfc3",
+            "actions": [
+                {
+                    "name": "InventoryOnOff",
+                    "type": "Button",
+                    "id": "6b758210-9a91-4595-abbe-e6bef3fbecfa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "2a792838-d7ff-458c-8b01-48ae8fce3486",
+                    "id": "c15c8051-906f-44ff-a8c0-c23e53960f2a",
                     "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",

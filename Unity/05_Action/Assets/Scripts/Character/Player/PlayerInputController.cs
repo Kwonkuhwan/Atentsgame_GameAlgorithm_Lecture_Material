@@ -48,6 +48,12 @@ public class PlayerInputController : MonoBehaviour
         player = GetComponent<Player>();
     }
 
+    private void Start()
+    {
+        GameManager.Inst.InvenUI.OnInventoryOpen += () => actions.Player.Disable();
+        GameManager.Inst.InvenUI.OnInventoryClose += () => actions.Player.Enable();
+    }
+
     private void OnEnable()
     {
         actions.Player.Enable();
@@ -57,11 +63,13 @@ public class PlayerInputController : MonoBehaviour
         actions.Player.Attack.performed += OnAttack;
         actions.Player.LockOn.performed += OnLockOn;
         actions.Player.Pickup.performed += OnPickUp;
-        actions.Player.InventoryOnOff.performed += OnInventroyOnOff;
+        actions.ShortCut.Enable();
+        actions.ShortCut.InventoryOnOff.performed += OnInventroyOnOff;
     }
     private void OnDisable()
     {
-        actions.Player.InventoryOnOff.performed -= OnInventroyOnOff;
+        actions.ShortCut.InventoryOnOff.performed -= OnInventroyOnOff;
+        actions.ShortCut.Disable();
         actions.Player.Pickup.performed -= OnPickUp;
         actions.Player.LockOn.performed -= OnLockOn;
         actions.Player.Attack.performed -= OnAttack;

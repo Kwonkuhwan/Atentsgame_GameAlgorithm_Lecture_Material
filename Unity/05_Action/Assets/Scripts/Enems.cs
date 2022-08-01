@@ -17,5 +17,7 @@ public enum ItemIDCode
     Coin_Silver,
     Coin_Gold,
     Egg,
-    Bone
+    Bone,
+    HealingPotion,
+    ManaPotion
 }

@@ -393,6 +393,7 @@
 "Assets/Scripts/Inventory/InventoryUI.cs"
 "Assets/Scripts/Inventory/ItemSlot.cs"
 "Assets/Scripts/Inventory/ItemSlotUI.cs"
+"Assets/Scripts/Inventory/ItemSpliterUI.cs"
 "Assets/Scripts/Inventory/TempItemSlotUI.cs"
 "Assets/Scripts/Item/Item.cs"
 "Assets/Scripts/Item/ItemDataManager.cs"

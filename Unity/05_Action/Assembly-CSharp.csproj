@@ -65,9 +65,11 @@
     <Compile Include="Assets\Scripts\Test\Test_UI_Event.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSpliterUI.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\RandomIdleSelect.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\Scripts\Inventory\DetailInfoUI.cs" />
     <Compile Include="Assets\Scripts\Character\IBattle.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -101,7 +103,6 @@
     <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
-    <Compile Include="Assets\Scripts\Inventory\DetailInfoUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
