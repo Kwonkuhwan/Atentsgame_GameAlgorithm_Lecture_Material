@@ -34,6 +34,19 @@ public class ItemFactory
         return obj;                                    // 생성완료된 데이터 리턴
     }
 
+    public static void MakeItem(ItemIDCode code, Vector3 position, uint count)
+    {
+        for(int i=0; i<count; i++)
+        {
+            MakeItem(code, position, true);
+        }
+    }
+
+    public static void MakeItem(uint id, Vector3 position, uint count)
+    {
+        MakeItem((ItemIDCode)id, position, count);
+    }
+
     public static GameObject MakeItem(ItemIDCode code, Vector3 position, bool randomNoise = false)
     {
         GameObject obj = MakeItem(code);
@@ -47,5 +60,15 @@ public class ItemFactory
         obj.transform.position = position;
 
         return obj;
+    }
+    public static GameObject MakeItem(uint id)
+    {
+        return MakeItem((ItemIDCode)id);
+    }
+
+
+    public static GameObject MakeItem(uint id, Vector3 position, bool randomNoise = false)
+    {
+        return MakeItem((ItemIDCode)id, position, randomNoise);
     }
 }

@@ -229,6 +229,18 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
+      propertyPath: itemDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 74b58c9879c485c40b4198af9a133a5c, type: 2}
+    - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
+      propertyPath: itemDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c1f30bfb08f3ac45adb8b653d556958, type: 2}
+    - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
+      propertyPath: itemDatas.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b62be91b7c011ea4094f24641c0e5252, type: 2}
+    - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
       propertyPath: itemDatas.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 295fe327d8c848149a4eb5510a9b5470, type: 2}
@@ -239,11 +251,11 @@ PrefabInstance:
     - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
       propertyPath: itemDatas.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 2f43b59771fb8ca42bced4d5820c9d6e, type: 2}
+      objectReference: {fileID: 11400000, guid: f5516b67e3eae534abfcfec02ec31760, type: 2}
     - target: {fileID: 2282734902436897102, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
       propertyPath: itemDatas.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: eb9666fa065234f479c54e90b11f3377, type: 2}
+      objectReference: {fileID: 11400000, guid: 0a4a08abc7330b34eaf62b2b1df1734c, type: 2}
     - target: {fileID: 2282734902436897103, guid: d696cdb3cab65ce419ca77f4cb35a653, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -710,6 +722,10 @@ PrefabInstance:
     - target: {fileID: 6589128402513483107, guid: c9c7fa0aa4ff5c24aafe8531304c948c, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589128402513483107, guid: c9c7fa0aa4ff5c24aafe8531304c948c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9c7fa0aa4ff5c24aafe8531304c948c, type: 3}

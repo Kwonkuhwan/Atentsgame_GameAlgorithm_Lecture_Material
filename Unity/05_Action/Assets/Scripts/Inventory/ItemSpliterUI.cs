@@ -93,7 +93,14 @@ public class ItemSpliterUI : MonoBehaviour
 
     private void OnInputChange(string input)
     {
-        Debug.Log($"OnInputChange : {input}");
-        ItemSplitCount = uint.Parse(input);
+        //Debug.Log($"OnInputChange : {input}");
+        if (input.Length == 0)
+        {
+            ItemSplitCount = 0;
+        }
+        else
+        {
+            ItemSplitCount = uint.Parse(input);
+        }
     }
 }

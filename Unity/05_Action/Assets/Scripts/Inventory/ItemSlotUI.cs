@@ -106,25 +106,19 @@ public class ItemSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (Keyboard.current.leftShiftKey.ReadValue() > 0)
+            TempItemSlotUI temp = invenUI.TempSlotUI;
+            if (Keyboard.current.leftShiftKey.ReadValue() > 0 && temp.IsEmpty())
             {
-                Debug.Log("Shift + 좌클릭");
+                //Debug.Log("Shift + 좌클릭");
                 invenUI.SpliterUI.Open(this);
                 detailInfoUI.Close();
                 detailInfoUI.IsPause = true;
             }
             else
             {
-                //    if(invenUI.TempSlotUI.ItemSlot.IsEmpty())
-                //    {
-                //        eventData.pointerCurrentRaycast.gameObject
-                //    }
-
-
-                TempItemSlotUI temp = invenUI.TempSlotUI;
 
                 //temp.gameObject.activeSelf;
-                if (temp.ItemSlot != null)  // temp에 ItemSlot이 들어있다 => 아이템을 덜어낸 상황이다.
+                if (!temp.IsEmpty())  // temp에 ItemSlot이 들어있다 => 아이템을 덜어낸 상황이다.
                 {
                     if (ItemSlot.IsEmpty())
                     {
@@ -144,7 +138,7 @@ public class ItemSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
                         ItemSlot.IncreaseSlotItem(small);
                         temp.ItemSlot.DecreaseSlotItem(small);
-                        if(temp.ItemSlot.ItemCount <1)
+                        if (temp.ItemSlot.ItemCount < 1)
                         {
                             temp.Close();
                         }
@@ -156,6 +150,18 @@ public class ItemSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                         uint tempCount = temp.ItemSlot.ItemCount;
                         temp.ItemSlot.AssignSlotItem(itemSlot.SlotItemData, itemSlot.ItemCount);
                         itemSlot.AssignSlotItem(tempData, tempCount);
+                    }
+                }
+                else
+                {
+                    if(!itemSlot.IsEmpty())
+                    {
+                        IUsable usable = itemSlot.SlotItemData as IUsable;
+                        if(usable != null)
+                        {
+                            usable.Use(GameManager.Inst.MainPlayer.gameObject);
+                            ItemSlot.DecreaseSlotItem();
+                        }
                     }
                 }
             }

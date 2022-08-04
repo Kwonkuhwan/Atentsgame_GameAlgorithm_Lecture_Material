@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\Inventory\DetailInfoUI.cs" />
     <Compile Include="Assets\Scripts\Character\IBattle.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_HealingPotion.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_ManaPotion.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
@@ -92,7 +94,9 @@
     <Compile Include="Assets\Scripts\Item\ItemDataManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\IUsable.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerInputController.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\IConsumalbe.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\Scripts\Enems.cs" />
     <Compile Include="Assets\Scripts\Character\Player\FindWeapon.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Assets\Scripts\StopAura.cs" />
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_Coin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />

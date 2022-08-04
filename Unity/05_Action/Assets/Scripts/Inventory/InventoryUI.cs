@@ -22,6 +22,8 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private ItemSlotUI[] slotUIs;   // 이 인벤토리가 가지고 있는 슬롯UI들
 
     private CanvasGroup canvasGroup;
+
+    private PlayerInputActions InputActions;
     // ----------------------------------------------------------------------------------------
 
     // Item 데이터 -----------------------------------------------------------------------------
@@ -64,6 +66,20 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
         Button closeButton = transform.Find("CloseButton").GetComponent<Button>();
         closeButton.onClick.AddListener(Close);
+
+        InputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        InputActions.ShortCut.Enable();
+        InputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        InputActions.Disable();
+        InputActions.ShortCut.Disable();
     }
 
     private void Start()
@@ -116,6 +132,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
         tempItemSlotUI.Initialize(Inventory.TempSlotID, inven.TempSlot);
         tempItemSlotUI.Close();
+        InputActions.UI.ItemDrop.canceled += tempItemSlotUI.OnDrop;
 
         itemSpliterUI.Initialize();
         itemSpliterUI.OnOkClick += OnSpliteOk;

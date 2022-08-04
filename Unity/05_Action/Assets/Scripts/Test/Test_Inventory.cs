@@ -4,7 +4,24 @@ using UnityEngine;
 
 public class Test_Inventory : MonoBehaviour
 {
+
     private void Start()
+    {
+        ItemFactory.MakeItem(ItemIDCode.Coin_Gold, new(1,0,0));
+        ItemFactory.MakeItem(ItemIDCode.Coin_Silver, new(2, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.Coin_Copper, new(3, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.Bone, new(4, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.Egg, new(5, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.HealingPotion, new(6, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.HealingPotion, new(6, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.HealingPotion, new(6, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+    }
+    private void Test_DummyInventory()
     {
         //Test_AddRemoveMove();
 
@@ -35,6 +52,12 @@ public class Test_Inventory : MonoBehaviour
         //inven.ClearItem(0);
         //inven.RemoveItem(5);
 
+        //ItemFactory.MakeItem(ItemIDCode.Egg, new(1, 0, 0));
+        //ItemFactory.MakeItem(ItemIDCode.Bone, new(2, 0, 0));
+        //ItemFactory.MakeItem(ItemIDCode.HealingPotion, new(3, 0, 0));
+        //ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(4, 0, 0));
+
+        Camera.main.ScreenPointToRay(UnityEngine.InputSystem.Mouse.current.position.ReadValue());
     }
 
     private static void Test_AddRemoveMove()

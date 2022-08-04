@@ -5,9 +5,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class TempItemSlotUI : ItemSlotUI
 {
+    private PointerEventData eventData;
+
     /// <summary>
     /// Awake을 override해서 부모의 Awake 실행안되게 만들기
     /// </summary>
@@ -17,7 +20,11 @@ public class TempItemSlotUI : ItemSlotUI
         countText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    
+    private void Start()
+    {
+        eventData = new PointerEventData(EventSystem.current);
+    }
+
     private void Update()
     {
         transform.position = Mouse.current.position.ReadValue();
@@ -47,14 +54,25 @@ public class TempItemSlotUI : ItemSlotUI
 
     public bool IsEmpty() => itemSlot.IsEmpty();
 
-    /// <summary>
-    /// 임시 슬롯에서 보일 슬롯 설정
-    /// </summary>
-    /// <param name="slot">임시 슬롯에 할당할 아이템이 들어있는 슬롯</param>
-    private void SetTempSlot(ItemSlot slot)
+
+    public void OnDrop(InputAction.CallbackContext context)
     {
-        itemSlot = slot;
-        Refresh();
-        //Refresh();
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        eventData.position = mousePos;
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        if (results.Count < 1 && !IsEmpty())
+        {
+            Debug.Log("UI 바깥쪽");
+
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            if(Physics.Raycast(ray, out RaycastHit hit, 1000.0f, LayerMask.GetMask("Ground")))
+            {
+                Vector3 pos = GameManager.Inst.MainPlayer.ItemDropPosition(hit.point);
+                ItemFactory.MakeItem(ItemSlot.SlotItemData.id, pos, ItemSlot.ItemCount);
+
+                Close();
+            }
+        }
     }
 }

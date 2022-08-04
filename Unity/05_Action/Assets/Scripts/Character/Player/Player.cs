@@ -48,7 +48,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
     //LockOn -------------------------------------------------------------------------
     public GameObject lockOnEffect;
     public Transform lockOnTarget;
-    float lockOnRange = 5.0f;
+    private float lockOnRange = 5.0f;
     //--------------------------------------------------------------------------------
 
     //Item ---------------------------------------------------------------------------
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
     public int Money 
     { 
         get => money;
-        private set
+        set
         {
             if (money != value)
             {
@@ -68,7 +68,13 @@ public class Player : MonoBehaviour, IHealth, IBattle
     }
 
     public System.Action<int> OnMoneyChange;
+    private float dropRange = 2.0f;
     //--------------------------------------------------------------------------------
+
+    //Inventory ----------------------------------------------------------------------
+    private Inventory inven;
+    //--------------------------------------------------------------------------------
+
 
     private void Awake()
     {
@@ -78,11 +84,17 @@ public class Player : MonoBehaviour, IHealth, IBattle
         sheild = GetComponentInChildren<FindShield>().gameObject;
 
         ps = weapon.GetComponentInChildren<ParticleSystem>();
+
+        inven = new Inventory();
     }
 
     private void Start()
     {
-        lockOnEffect = GameObject.Find("LockOnEffect");
+        if (lockOnEffect == null)
+        {
+            lockOnEffect = GameObject.Find("LockOnEffect");
+        }
+        GameManager.Inst.InvenUI.InitializeInventory(inven);
     }
     public void ShowWeapons(bool isShow)
     {
@@ -207,15 +219,44 @@ public class Player : MonoBehaviour, IHealth, IBattle
         foreach(var col in cols)
         {
             Item item = col.GetComponent<Item>();
-            Money += (int)item.data.value;
-            Destroy(col.gameObject);
+            IConsumalbe consumable = item.data as IConsumalbe;
+            if(consumable != null)
+            {
+                consumable.Consume(this);
+                Destroy(col.gameObject);
+            }
+            else
+            {
+                if(inven.AddItem(item.data))
+                {
+                    Destroy(col.gameObject);
+                }
+            }
         }
         //Debug.Log($"{money}");
+    }
+
+    public Vector3 ItemDropPosition(Vector3 inputPos)
+    {
+        Vector3 result = Vector3.zero;
+        Vector3 toInputPos = inputPos - transform.position;
+        if(toInputPos.sqrMagnitude > dropRange * dropRange)
+        {
+            result = transform.position + toInputPos.normalized * dropRange;
+        }
+        else
+        {
+            result = inputPos;
+        }
+
+        return result;
     }
 
     private void OnDrawGizmos()
     {
         Handles.color = Color.white;
-        Handles.DrawWireDisc(transform.position, transform.up, lockOnRange);    
+        Handles.DrawWireDisc(transform.position, transform.up, lockOnRange);
+        Handles.color = Color.yellow;
+        Handles.DrawWireDisc(transform.position, transform.up, itemPickupRange);
     }
 }

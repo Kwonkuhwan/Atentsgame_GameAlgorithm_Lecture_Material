@@ -180,6 +180,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "72367885-89bd-4f64-bcf3-dcf5c601d6c5",
+            "actions": [
+                {
+                    "name": "ItemDrop",
+                    "type": "Button",
+                    "id": "ae673566-2bdb-42ac-9a06-ec2062d486d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "56cb96a7-8596-450d-a134-cba32e258bb9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard,Mouse",
+                    "action": "ItemDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
