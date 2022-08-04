@@ -408,6 +408,7 @@
 "Assets/Scripts/Item/ScriptableObject/ItemData_Coin.cs"
 "Assets/Scripts/Item/ScriptableObject/ItemData_HealingPotion.cs"
 "Assets/Scripts/Item/ScriptableObject/ItemData_ManaPotion.cs"
+"Assets/Scripts/Item/ScriptableObject/ItemData_Weapon.cs"
 "Assets/Scripts/Item/ScriptableObject/IUsable.cs"
 "Assets/Scripts/StopAura.cs"
 "Assets/Scripts/Test/TestWeaponSwing.cs"

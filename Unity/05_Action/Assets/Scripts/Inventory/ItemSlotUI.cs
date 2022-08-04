@@ -161,6 +161,7 @@ public class ItemSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                         {
                             invenUI.Detail.Close();
                         }
+                        ItemSlot.EquipSlotItem(GameManager.Inst.MainPlayer.gameObject);
                     }
                 }
             }

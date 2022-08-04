@@ -108,19 +108,57 @@ public class ItemSlot
         ItemCount = 0;
     }
 
+    /// <summary>
+    /// 아이템을 사용하는 함수
+    /// </summary>
+    /// <param name="target">아이템의 효과를 받을 대상(보통 플레이어)</param>
     public void UseSlotItem(GameObject target = null)
     {
-        IUsable usable = slotItemData as IUsable;
+        IUsable usable = slotItemData as IUsable;   // 이 아이템이 사용가능한 아이템인지 확인
         if(usable != null)
         {
-            usable.Use(target);
-            DecreaseSlotItem();
+            // 아이템이 사용가능하면
+            usable.Use(target); // 아이템 사용하고
+            DecreaseSlotItem(); // 개수 줄이기
         }
     }
 
-    // 아이템 갯수를 증가/감소시키는 함수
-    // 아이템을 사용하는 함수
-    // 아이템을 장비하는 함수
+    /// <summary>
+    /// 아이템을 장비하는 함수
+    /// </summary>
+    /// <param name="target">아이템을 장비하는 대상</param>
+    public void EquipSlotItem(GameObject target = null)
+    {
+        IEquipItem equipItem = SlotItemData as IEquipItem;  // 이 아이템이 장비 가능한 아이템인지 확인
+        if(equipItem != null)
+        {
+            // 아이템이 장비 가능하면
+            ItemData_Weapon weaponData = SlotItemData as ItemData_Weapon;       // 아이템 데이터 따로 보관
+            IEquipTarget equipTarget = target.GetComponent<IEquipTarget>();     // 아이템을 장비할 대상이 아이템을 장비할 수 있다.
+            if (equipTarget != null)
+            {
+                if (equipTarget.IsWeaponEquiped)                                // 무기를 장비하고 있는지 확인
+                {
+                    // 무기를 장비하고 있다
+                    if (equipTarget.EquipItem != SlotItemData)                  // 장비하려는 아이템과 같은 종류인지 확인
+                    {
+                        // 다른 무기를 장비하고 있다
+                        equipTarget.UnEquipWeapon();                            // 일단 무기를 벗는다
+                        equipTarget.EquipWeapon(weaponData);                    // 다른 무기를 장비
+                    }
+                    else
+                    {
+                        equipTarget.UnEquipWeapon();                            // 같은 무기를 장비한 상황이면 벗긴다.
+                    }
+                }
+                else
+                {
+                    // 무기를 장비하고 있지 않다.
+                    equipTarget.EquipWeapon(weaponData);
+                }
+            }
+        }
+    }
 
     // ----------------------------------------------------------------------------------
     // 함수(백엔드) ----------------------------------------------------------------------

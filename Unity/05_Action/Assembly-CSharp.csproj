@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Camera\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\Item\ItemDataManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_Weapon.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\IUsable.cs" />
     <Compile Include="Assets\Scripts\Character\Player\IEquipTarget.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Assets\Input\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar_UI.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_Coin.cs" />
-    <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_ExternalAssets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />

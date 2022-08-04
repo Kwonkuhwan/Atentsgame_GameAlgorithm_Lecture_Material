@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-public class Player : MonoBehaviour, IHealth, IMana, IBattle
+public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
 {
     private GameObject weapon = null;
     private GameObject sheild = null;
@@ -89,6 +89,11 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle
             }
         }    
     }
+
+    ItemData_Weapon equipItem;
+    public ItemData_Weapon EquipItem => equipItem;
+
+    public bool IsWeaponEquiped => equipItem != null;
 
     public System.Action<int> OnMoneyChange;
     private float dropRange = 2.0f;
@@ -283,4 +288,23 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(transform.position, transform.up, itemPickupRange);
     }
+
+    public void EquipWeapon(ItemData_Weapon weaponData)
+    {
+        ShowWeapons(true);      // 장비하면 무조건 보이도록
+        GameObject obj = Instantiate(weaponData.prefab, weapon.transform);  // 새로 장비할 아이템 생성
+        obj.transform.localPosition = new(0, 0, 0);                         // 부모에게 정확히 붙도록 로컬을 0,0,0으로 설정
+        ps = obj.GetComponent<ParticleSystem>();                            // 파티클 시스템 갱신
+        equipItem = weaponData;                                             // 장비한 아이템 표시
+    }
+
+    public void UnEquipWeapon()
+    {
+        equipItem = null;                                   // 장비가 해제됬다는 것을 표시하기 위함(IsWeaponEquiped 변경용)
+        ps = null;                                          // 파티클 시스템 비우기
+        Transform sword = weapon.transform.GetChild(0);
+        sword.parent = null;
+        Destroy(sword.gameObject);
+    }
+
 }

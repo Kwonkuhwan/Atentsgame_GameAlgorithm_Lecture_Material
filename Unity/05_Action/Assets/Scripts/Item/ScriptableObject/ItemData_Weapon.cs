@@ -8,30 +8,41 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon Item Potion", menuName = "Scriptable Object/Item Data - Weapon", order = 5)]
 public class ItemData_Weapon : ItemData, IEquipItem
 {
-    bool isEquiped = false;
+    [Header("무기 데이터")]
+    public float attackPower = 10.0f;
+    public float attackSpeed = 1.0f;
 
-    public bool IsEqiped => isEquiped;
-
+    /// <summary>
+    /// 아이템 장비
+    /// </summary>
+    /// <param name="target">아이템을 장비할 대상</param>
     public void EquipItem(IEquipTarget target)
     {
-        target.EqupWeapon(this);
-        isEquiped = true;
+        target.EquipWeapon(this);
     }
 
+    /// <summary>
+    /// 아이템 장비/해제 토글
+    /// </summary>
+    /// <param name="target">아이템을 토글할 대상</param>
     public void ToggleEquipItem(IEquipTarget target)
     {
         if(target.IsWeaponEquiped)
         {
-            target.UnEqupWeapon();
+            target.UnEquipWeapon();
         }
         else
         {
-            target.EqupWeapon(this);
+            target.EquipWeapon(this);
         }
     }
 
+    /// <summary>
+    /// 아이템 해제
+    /// </summary>
+    /// <param name="target">아이템을 해제할 대상</param>
     public void UnEquipItem(IEquipTarget target)
     {
-        target.UnEqupWeapon();
+        target.UnEquipWeapon();
     }
 }
