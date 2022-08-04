@@ -108,6 +108,16 @@ public class ItemSlot
         ItemCount = 0;
     }
 
+    public void UseSlotItem(GameObject target = null)
+    {
+        IUsable usable = slotItemData as IUsable;
+        if(usable != null)
+        {
+            usable.Use(target);
+            DecreaseSlotItem();
+        }
+    }
+
     // 아이템 갯수를 증가/감소시키는 함수
     // 아이템을 사용하는 함수
     // 아이템을 장비하는 함수

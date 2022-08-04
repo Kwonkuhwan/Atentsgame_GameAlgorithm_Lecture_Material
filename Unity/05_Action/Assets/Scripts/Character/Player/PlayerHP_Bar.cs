@@ -14,7 +14,7 @@ public class PlayerHP_Bar : MonoBehaviour
         slider = GetComponent<Slider>();
         target = GameManager.Inst.MainPlayer.GetComponent<IHealth>();
         target.onHealthChage += SetHP_Value;
-
+        SetHP_Value();
     }
 
     private void SetHP_Value()

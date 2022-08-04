@@ -154,13 +154,12 @@ public class ItemSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 }
                 else
                 {
-                    if(!itemSlot.IsEmpty())
+                    if (!itemSlot.IsEmpty())
                     {
-                        IUsable usable = itemSlot.SlotItemData as IUsable;
-                        if(usable != null)
+                        itemSlot.UseSlotItem(GameManager.Inst.MainPlayer.gameObject);
+                        if (ItemSlot.IsEmpty())
                         {
-                            usable.Use(GameManager.Inst.MainPlayer.gameObject);
-                            ItemSlot.DecreaseSlotItem();
+                            invenUI.Detail.Close();
                         }
                     }
                 }

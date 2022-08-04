@@ -19,7 +19,11 @@ public class Test_Inventory : MonoBehaviour
         ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
         ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
         ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
-        ItemFactory.MakeItem(ItemIDCode.ManaPotion, new(7, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.OneHandSword1, new(8, 0, 0));
+        ItemFactory.MakeItem(ItemIDCode.OneHandSword2, new(9, 0, 0));
+
+        GameManager.Inst.MainPlayer.HP = 50;
+        GameManager.Inst.MainPlayer.MP = 50;
     }
     private void Test_DummyInventory()
     {

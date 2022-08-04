@@ -13,11 +13,13 @@ public enum EnemyState
 
 public enum ItemIDCode
 {
-    Coin_Copper,
+    Coin_Copper = 0,
     Coin_Silver,
     Coin_Gold,
     Egg,
     Bone,
     HealingPotion,
-    ManaPotion
+    ManaPotion,
+    OneHandSword1,
+    OneHandSword2
 }

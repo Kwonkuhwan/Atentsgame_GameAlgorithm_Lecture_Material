@@ -525,6 +525,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1550200923, guid: d379725f772299e4095357b8e5316d67, type: 3}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550200923, guid: d379725f772299e4095357b8e5316d67, type: 3}
       propertyPath: lockOnEffect
       value: 
       objectReference: {fileID: 1264324926}

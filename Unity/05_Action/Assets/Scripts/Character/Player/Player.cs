@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-public class Player : MonoBehaviour, IHealth, IBattle
+public class Player : MonoBehaviour, IHealth, IMana, IBattle
 {
     private GameObject weapon = null;
     private GameObject sheild = null;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
         {
             if (hp != value)
             {
-                hp = value;
+                hp = Mathf.Clamp(value, 0, maxHP);
                 onHealthChage?.Invoke();
             }
         }
@@ -34,6 +34,29 @@ public class Player : MonoBehaviour, IHealth, IBattle
 
     public System.Action onHealthChage { get; set; }
     //--------------------------------------------------------------------------------
+
+    //IMana ------------------------------------------------------------------------
+    public float mp = 150.0f;
+    private float maxMP = 150.0f;
+
+    public float MP 
+    {
+        get => mp;
+        set
+        {
+            if(mp != value)
+            {
+                mp = Mathf.Clamp(value, 0, maxMP);
+                onManaChage?.Invoke();
+            }
+        }
+    }
+
+    public float MaxMP { get => maxMP; }
+
+    public System.Action onManaChage { get; set; }
+    //--------------------------------------------------------------------------------
+
 
     //IBattle ------------------------------------------------------------------------
     private float attackPower = 30.0f;
@@ -96,6 +119,7 @@ public class Player : MonoBehaviour, IHealth, IBattle
         }
         GameManager.Inst.InvenUI.InitializeInventory(inven);
     }
+
     public void ShowWeapons(bool isShow)
     {
         weapon.SetActive(isShow);
