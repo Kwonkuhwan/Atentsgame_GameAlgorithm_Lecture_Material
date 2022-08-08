@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
     private GameObject sheild = null;
 
     private ParticleSystem ps = null;
+    private CapsuleCollider weaponCollider = null;
     private Animator ani = null;
 
     //IHealth ------------------------------------------------------------------------
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
     public GameObject lockOnEffect;
     public Transform lockOnTarget;
     private float lockOnRange = 5.0f;
+    public Transform LockOnTarget { get => lockOnTarget; }
     //--------------------------------------------------------------------------------
 
     //Item ---------------------------------------------------------------------------
@@ -90,17 +92,15 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
         }    
     }
 
-    ItemData_Weapon equipItem;
-    public ItemData_Weapon EquipItem => equipItem;
-
-    public bool IsWeaponEquiped => equipItem != null;
-
     public System.Action<int> OnMoneyChange;
     private float dropRange = 2.0f;
     //--------------------------------------------------------------------------------
 
     //Inventory ----------------------------------------------------------------------
     private Inventory inven;
+
+    ItemSlot equipItemSlot;
+    public ItemSlot EquipItemSlot => equipItemSlot;
     //--------------------------------------------------------------------------------
 
 
@@ -121,6 +121,7 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
         if (lockOnEffect == null)
         {
             lockOnEffect = GameObject.Find("LockOnEffect");
+            lockOnEffect.SetActive(false);
         }
         GameManager.Inst.InvenUI.InitializeInventory(inven);
     }
@@ -133,15 +134,18 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
 
     public void TurnOnAura(bool turnOn)
     {
-        if (turnOn)
+        if (ps != null)
         {
-            //Debug.Log("오라 켜기");
-            ps.Play();
-        }
-        else
-        {
-            //Debug.Log("오라 끄기");
-            ps.Stop();
+            if (turnOn)
+            {
+                //Debug.Log("오라 켜기");
+                ps.Play();
+            }
+            else
+            {
+                //Debug.Log("오라 끄기");
+                ps.Stop();
+            }
         }
     }
 
@@ -150,6 +154,12 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
         if (target != null)
         {
             float damage = AttackPower;
+            if (EquipItemSlot != null && EquipItemSlot.ItemEquiped)
+            {
+                ItemData_Weapon weapon = EquipItemSlot.SlotItemData as ItemData_Weapon;
+                damage += weapon.attackPower;
+            }
+
             if (Random.Range(0.0f, 1) < criticalRate)
             {
                 damage *= 2.0f;
@@ -206,7 +216,6 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
 
         if (cols.Length > 0)
         {
-
             // 가장 가까운 컬라이더를 찾기
             Collider nearest = null;
             float nearestDistance = float.MaxValue;
@@ -219,24 +228,32 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
                     nearest = col;
                 }
             }
-            
-            lockOnTarget = nearest.transform;
-            //Debug.Log($"Lock on : { lockOnTarget.name}");
 
-            lockOnTarget.gameObject.GetComponent<Enemy>().OnDead += LockOff;
+            if (lockOnTarget?.gameObject != nearest.gameObject)
+            {
+                if(LockOnTarget != null)
+                {
+                    LockOff();
+                }
 
-            lockOnEffect.transform.position = lockOnTarget.position;
-            lockOnEffect.transform.parent = lockOnTarget;
-            lockOnEffect.SetActive(true);
+                lockOnTarget = nearest.transform;
+                //Debug.Log($"Lock on : { lockOnTarget.name}");
 
-            result = true;
+                lockOnTarget.gameObject.GetComponent<Enemy>().OnDead += LockOff;
+
+                lockOnEffect.transform.position = lockOnTarget.position;
+                lockOnEffect.transform.parent = lockOnTarget;
+                lockOnEffect.SetActive(true);
+
+                result = true;
+            }
         }
-
         return result;
     }
 
     private void LockOff()
     {
+        lockOnTarget.gameObject.GetComponent<Enemy>().OnDead -= LockOff;
         lockOnTarget = null;
         lockOnEffect.transform.parent = null;
         lockOnEffect.SetActive(false);
@@ -289,22 +306,42 @@ public class Player : MonoBehaviour, IHealth, IMana, IBattle, IEquipTarget
         Handles.DrawWireDisc(transform.position, transform.up, itemPickupRange);
     }
 
-    public void EquipWeapon(ItemData_Weapon weaponData)
+    public void EquipWeapon(ItemSlot weaponSlot)
     {
-        ShowWeapons(true);      // 장비하면 무조건 보이도록
-        GameObject obj = Instantiate(weaponData.prefab, weapon.transform);  // 새로 장비할 아이템 생성
-        obj.transform.localPosition = new(0, 0, 0);                         // 부모에게 정확히 붙도록 로컬을 0,0,0으로 설정
-        ps = obj.GetComponent<ParticleSystem>();                            // 파티클 시스템 갱신
-        equipItem = weaponData;                                             // 장비한 아이템 표시
+        ShowWeapons(true);  // 장비하면 무조건 보이도록
+        GameObject obj = Instantiate(weaponSlot.SlotItemData.prefab, weapon.transform);  // 새로 장비할 아이템 생성하기
+        obj.transform.localPosition = new(0, 0, 0);             // 부모에게 정확히 붙도록 로컬을 0,0,0으로 설정
+        ps = obj.GetComponent<ParticleSystem>();                // 파티클 시스템 갱신
+        weaponCollider = obj.GetComponent<CapsuleCollider>();
+        equipItemSlot = weaponSlot;                             // 장비한 아이템 표시
+        equipItemSlot.ItemEquiped = true;
     }
 
     public void UnEquipWeapon()
     {
-        equipItem = null;                                   // 장비가 해제됬다는 것을 표시하기 위함(IsWeaponEquiped 변경용)
-        ps = null;                                          // 파티클 시스템 비우기
-        Transform sword = weapon.transform.GetChild(0);
-        sword.parent = null;
-        Destroy(sword.gameObject);
+        equipItemSlot.ItemEquiped = false;
+        equipItemSlot = null;   // 장비가 해재됬다는 것을 표시하기 위함(IsWeaponEquiped 변경용)
+        ps = null;          // 파티클 시스템 비우기
+        weaponCollider = null;
+        Transform weaponChild = weapon.transform.GetChild(0);
+        weaponChild.parent = null;          // 무기가 붙는 장소에 있는 자식 지우기
+        Destroy(weaponChild.gameObject);    // 무기 디스트로이
     }
 
+    public void WeaponColliderOn()
+    {
+        if(weaponCollider != null)
+            weaponCollider.enabled = true;
+    }
+    public void WeaponColliderOff()
+    {
+        if (weaponCollider != null)
+            weaponCollider.enabled = false;
+    }
+
+    public void Test()
+    {
+        inven.AddItem(ItemIDCode.OneHandSword1);
+        EquipWeapon(inven[0]);
+    }
 }

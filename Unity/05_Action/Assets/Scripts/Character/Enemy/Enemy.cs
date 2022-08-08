@@ -309,10 +309,16 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
         float rand = Random.Range(0.0f, 1.0f);
         GameObject obj = null;
 
-        if (rand < 0.1f)
+        if (rand < 0.001f)
+            obj = ItemFactory.MakeItem(ItemIDCode.OneHandSword2);
+        else if (rand < 0.1f)
             obj = ItemFactory.MakeItem(ItemIDCode.Coin_Gold, transform.position, true);
-        else if(rand < 0.3f)
+        else if (rand < 0.3f)
             obj = ItemFactory.MakeItem(ItemIDCode.Coin_Silver, transform.position, true);
+        else if (rand < 0.4f)
+            obj = ItemFactory.MakeItem(ItemIDCode.HealingPotion, transform.position, true);
+        else if (rand < 0.5f)
+            obj = ItemFactory.MakeItem(ItemIDCode.ManaPotion, transform.position, true);
         else
             obj = ItemFactory.MakeItem(ItemIDCode.Coin_Copper, transform.position, true);
     }

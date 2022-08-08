@@ -71,6 +71,7 @@
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Scripts\Inventory\DetailInfoUI.cs" />
     <Compile Include="Assets\Scripts\Character\IBattle.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_Monster2.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_HealingPotion.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData_ManaPotion.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\Inventory\TempItemSlotUI.cs" />
     <Compile Include="Assets\Scripts\Item\ScriptableObject\ItemData.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets\Scripts\MonsterSpanwer.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Weapon.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Scripts\Character\Player\FindShield.cs" />
