@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 55a02abbae209de4b8fe8dd848b7b252
+  - enabled: 1
+    path: Assets/Scenes/Seamless_Base.unity
+    guid: cbd256045cade2d46b7a7932f996c839
+  - enabled: 1
+    path: Assets/Scenes/Seamless_0_0.unity
+    guid: b83c575348e03f446b265619288c5cd1
+  - enabled: 1
+    path: Assets/Scenes/Seamless_0_1.unity
+    guid: 425a097c1f1f14b4eadd93bea69bf9e1
+  - enabled: 1
+    path: Assets/Scenes/Seamless_0_2.unity
+    guid: 742415d65c9151e41968a9e54d9d8235
+  - enabled: 1
+    path: Assets/Scenes/Seamless_1_0.unity
+    guid: ce2f4cfead9ac8b4bbc88cafcb7a288b
+  - enabled: 1
+    path: Assets/Scenes/Seamless_1_1.unity
+    guid: fcd37f9014f64b84c8a2aa599eb63aba
+  - enabled: 1
+    path: Assets/Scenes/Seamless_1_2.unity
+    guid: 76ee75eb9c68e73469cadac71d2307e8
+  - enabled: 1
+    path: Assets/Scenes/Seamless_2_0.unity
+    guid: 2ab9b6f3f07ca0340a4987f920b15159
+  - enabled: 1
+    path: Assets/Scenes/Seamless_2_1.unity
+    guid: f785caf56ecbf094d9bd60a3783679e1
+  - enabled: 1
+    path: Assets/Scenes/Seamless_2_2.unity
+    guid: 9cfa293feb2036b4d85bb346538c02b0
+  m_configObjects: {}

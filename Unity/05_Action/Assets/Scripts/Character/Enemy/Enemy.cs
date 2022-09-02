@@ -325,7 +325,7 @@ public class Enemy : MonoBehaviour, IHealth, IBattle
 
     IEnumerator DeadEffect()
     {
-        ParticleSystem ps = GetComponentInChildren<ParticleSystem>();
+        ParticleSystem ps = GetComponentInChildren<ParticleSystem>();        
         ps.Play();
         ps.gameObject.transform.parent = null;
 
