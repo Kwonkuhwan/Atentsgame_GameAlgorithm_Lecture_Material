@@ -5,24 +5,35 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Shell : MonoBehaviour
 {
-    private float initialSpeed = 3.0f;
-    public GameObject ExplosionPrefab;
+    public ShellData data;
 
-    private Rigidbody rigid;
+    protected Rigidbody rigid;
+    
+    Material material;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        material = meshRenderer.material;
+        material.SetColor("_EffectColor", data.shellColor);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        rigid.velocity = transform.forward * initialSpeed;
+        rigid.velocity = transform.forward * data.initialSpeed;  // 시작하면 앞쪽 방향으로 initialSpeed만큼의 속도로 나간다.
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
-        Instantiate(ExplosionPrefab, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
-        Destroy(this.gameObject);
+
+        // 충돌하면 폭팔 이팩트 생성
+        data.Explosion(collision.contacts[0].point, collision.contacts[0].normal);
+
+        // 맞은 대상이 HP가 깎일 수 있는 대상이면 HP를 감소시킨다.
+        IHit hitTarget = collision.gameObject.GetComponent<IHit>();
+        data.TakeDamage(hitTarget);
+
+        Destroy(this.gameObject);   // 포탄 삭제
     }
 }

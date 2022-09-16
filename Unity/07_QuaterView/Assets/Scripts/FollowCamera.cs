@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform targetPosition;
-
-    public float cameraSpeed = 3.0f;
-
-    private Vector3 offset = Vector3.zero;
+    Transform target;
+    float speed = 3.0f;
+    Vector3 offset;
 
     private void Start()
     {
-        targetPosition = FindObjectOfType<Tank>()?.transform;
-
-        offset = transform.position - targetPosition.position;
+        target = FindObjectOfType<PlayerTank>()?.transform;
+        if (target != null)
+        {
+            offset = transform.position - target.position;
+        }
     }
 
-    private void LateUpdate()
+    // 모든 업데이트 함수들이 실행된 이후
+    private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(
-            transform.position,
-            targetPosition.position + offset,
-            cameraSpeed * Time.deltaTime);
+        if(target != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, speed * Time.fixedDeltaTime);
+        }
+        
     }
 }
