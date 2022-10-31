@@ -416,6 +416,7 @@
 "Assets/Scripts/Test/Test_Inventory.cs"
 "Assets/Scripts/Test/Test_Monster.cs"
 "Assets/Scripts/Test/Test_Monster2.cs"
+"Assets/Scripts/Test/Test_Test.cs"
 "Assets/Scripts/Test/Test_UI_Event.cs"
 "Assets/_ExternalAssets/JMO Assets/Cartoon FX/Demo/Assets/CFX_AutoStopLoopedEffect.cs"
 "Assets/_ExternalAssets/JMO Assets/Cartoon FX/Demo/Assets/CFX_Demo_New.cs"

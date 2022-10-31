@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Inventory\ItemSpliterUI.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyHP_Bar.cs" />
     <Compile Include="Assets\Scripts\Character\AnimationStateMachine\RandomIdleSelect.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_Test.cs" />
     <Compile Include="Assets\_ExternalAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Scripts\Inventory\DetailInfoUI.cs" />
     <Compile Include="Assets\Scripts\Character\IBattle.cs" />

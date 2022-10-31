@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Skill_Barrier",
+                    "type": "Button",
+                    "id": "0929481d-d713-461c-9de1-3e59e8878169",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -168,6 +177,17 @@
                     "processors": "",
                     "groups": "K&M",
                     "action": "ShortCut2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8ef1b68-198f-40fe-ba5e-5e28b415e975",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "K&M",
+                    "action": "Skill_Barrier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
