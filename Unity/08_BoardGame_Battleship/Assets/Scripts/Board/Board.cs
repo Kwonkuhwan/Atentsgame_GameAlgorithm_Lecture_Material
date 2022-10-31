@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Board : MonoBehaviour
 {
@@ -26,6 +25,11 @@ public class Board : MonoBehaviour
     bool[] bombInfo;
 
     /// <summary>
+    /// 공격당한 위치를 시작적으로 표시해주는 클래스(O,X,검정색 구(테스트 전용))
+    /// </summary>
+    BombMark bombMark;
+
+    /// <summary>
     /// 배 종류별 위치 정보저장용 딕셔너리.
     /// 배 종류별로 배가 배치되는 모든 칸 저장.
     /// </summary>
@@ -36,12 +40,7 @@ public class Board : MonoBehaviour
     /// <summary>
     /// 배 배치된 위치를 시각적으로 표시(색깔있는 구, 배종류별로 색상 다름)
     /// </summary>
-    ShipDeploymentInfo testShipDeploymentInfo;
-
-    /// <summary>
-    /// 공격당한 위치를 시작적으로 표시(검정색 구)
-    /// </summary>
-    BombInfo testBombInfo;
+    ShipDeploymentInfo testShipDeploymentInfo;    
 #endif
 
     // 델리게이트 ----------------------------------------------------------------------------------
@@ -102,10 +101,10 @@ public class Board : MonoBehaviour
         // 배가 공격 당했을 때 실행될 델리게이트를 가지는 딕셔너리 만들기
         onShipAttacked = new Dictionary<ShipType, Action>(ShipManager.Inst.ShipTypeCount);
 
-#if UNITY_EDITOR
         // 캐싱용으로 찾아놓기
+        bombMark = GetComponentInChildren<BombMark>();
+#if UNITY_EDITOR
         testShipDeploymentInfo = GetComponentInChildren<ShipDeploymentInfo>();
-        testBombInfo = GetComponentInChildren<BombInfo>();
 #endif
     }    
 
@@ -326,7 +325,10 @@ public class Board : MonoBehaviour
                 shipPositions[ship.Type].Add(tempPos);          // 배 종류별로 해당 칸들을 기록
             }
 
-            ship.IsDeployed = true; // 배를 배치했다고 표시
+            Vector3 worldPos = GridToWorld(pos);
+            ship.transform.position = worldPos;                 // 함선을 보드위에 배치시키기
+
+            ship.Deploy(gridPositions);                         // 배를 배치했다고 표시하고 그리드 좌표 받아서 기록
 
 #if UNITY_EDITOR
             // 함선이 배치된 곳에 표시
@@ -376,8 +378,8 @@ public class Board : MonoBehaviour
         {
             shipInfo[GridToIndex(pos)] = ShipType.None;
         }
-        shipPositions[ship.Type].Clear();   // 전부 비우고
-        ship.IsDeployed = false;            // 배가 배치되지 않은 것으로 표시
+        shipPositions[ship.Type].Clear();   // 전부 비우고            
+        ship.UnDeploy();                    // 배가 배치되지 않은 것으로 표시
     }
 
     // 피격용 함수들--------------------------------------------------------------------------------
@@ -403,14 +405,8 @@ public class Board : MonoBehaviour
                 }
 
                 onShipAttacked[shipInfo[index]]?.Invoke();  // 해당 위치에 배가 있으면 배가 공격당한 함수 실행                
-
-#if UNITY_EDITOR
-                if( testBombInfo != null )
-                {
-                    // 포탄이 터진 지역을 표시
-                    testBombInfo.MarkBombInfo(GridToWorld(gridPos));
-                }
-#endif
+                    
+                bombMark.SetBombMark(GridToWorld(gridPos), result);    // 포탄 명중 여부를 표시
             }
         }
 

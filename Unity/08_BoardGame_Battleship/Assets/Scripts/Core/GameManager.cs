@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
     // 플레이어들 ----------------------------------------------------------------------------------
     private UserPlayer userPlayer;
     private EnemyPlayer enemyPlayer;
+    private ShipDeployData[] shipDeployDatas;
 
     public UserPlayer UserPlayer => userPlayer;
     public EnemyPlayer EnemyPlayer => enemyPlayer;
@@ -35,12 +36,12 @@ public class GameManager : Singleton<GameManager>
     private GameState state = GameState.Title;
 
     /// <summary>
-    /// 상태 설정 및 확인용 프로퍼티(설정은 자신만 가능)
+    /// 상태 설정 및 확인용 프로퍼티
     /// </summary>
     public GameState State
     {
         get => state;
-        private set
+        set
         {
             state = value;                  // 상태 변경하고
             onStateChange?.Invoke(state);   // 델리게이트에 연결된 함수들 실행
@@ -61,6 +62,9 @@ public class GameManager : Singleton<GameManager>
         input = GetComponent<InputController>();    // 인풋 컨트롤러 찾기
     }
 
+    /// <summary>
+    /// 씬이 로드되었을 때 호출되는 초기화 함수
+    /// </summary>
     protected override void Initialize()
     {
         userPlayer = FindObjectOfType<UserPlayer>();
@@ -68,8 +72,58 @@ public class GameManager : Singleton<GameManager>
 
         onStateChange = null;   // 씬이 다시 로드되었을 때 이전에 연결된 함수들을 제거
 
-        onStateChange += userPlayer.OnStateChange;  // 플레이어의 상태처리 함수 연결
-        onStateChange += enemyPlayer.OnStateChange;
+        // 씬에 따라 특정 플레이어가 없을 수 있음
+        if (userPlayer != null)
+        {
+            onStateChange += userPlayer.OnStateChange;  // 유저 플레이어의 상태처리 함수 연결
+        }
+        if (enemyPlayer != null)
+        {
+            // 적은 함선배치모드에서는 없다.
+            onStateChange += enemyPlayer.OnStateChange; // 컴퓨터 플레이어의 상태처리 함수 연결
+        }
+    }
+
+    /// <summary>
+    /// 배치한 배의 위치와 방향 저장하는 함수
+    /// </summary>
+    /// <param name="targetPlayer">저장할 배치정보를 가지고 있는 플레이어</param>
+    public void SaveShipDeployData(PlayerBase targetPlayer)
+    {
+        shipDeployDatas = new ShipDeployData[targetPlayer.Ships.Length];
+        for (int i = 0; i < shipDeployDatas.Length; i++)
+        {
+            shipDeployDatas[i] = new ShipDeployData();
+            shipDeployDatas[i].shipType = targetPlayer.Ships[i].Type;
+            shipDeployDatas[i].direction = targetPlayer.Ships[i].Direction;
+            shipDeployDatas[i].size = targetPlayer.Ships[i].Size;
+            shipDeployDatas[i].position = targetPlayer.Ships[i].Positions[0];
+        }
+    }
+
+    /// <summary>
+    /// 저장된 배 배치정보를 불러오는 함수
+    /// </summary>
+    /// <param name="targetPlayer">불러올 배치정보를 적용받을 플레이어</param>
+    /// <returns>저장된 정보가 있어서 불어왔다면 true, 없어서 읽지 못했다면 false</returns>
+    public bool LoadShipDeplyData(PlayerBase targetPlayer)
+    {
+        bool result = false;
+        if (shipDeployDatas != null)
+        {
+            targetPlayer.UndoAllShipDeployment();               // 기존의 배치 모두 취소
+
+            for (int i = 0; i < shipDeployDatas.Length; i++)
+            {
+                Ship targetShip = targetPlayer.Ships[i];
+                targetShip.Direction = shipDeployDatas[i].direction;
+                targetPlayer.Board.ShipDeployment(targetShip, shipDeployDatas[i].position); // 다시 전부 배치
+                targetShip.gameObject.SetActive(true);
+            }
+            result = true;
+        }
+
+        return result;
     }
 
 

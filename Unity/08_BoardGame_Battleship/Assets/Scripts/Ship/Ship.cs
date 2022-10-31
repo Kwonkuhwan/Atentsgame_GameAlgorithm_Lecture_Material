@@ -12,6 +12,11 @@ public class Ship : MonoBehaviour
     ShipType type;
 
     /// <summary>
+    /// 배의 이름
+    /// </summary>
+    string shipName;
+
+    /// <summary>
     /// 배가 바라보는 방향
     /// </summary>
     ShipDirection direction;
@@ -20,6 +25,11 @@ public class Ship : MonoBehaviour
     /// 배의 크기
     /// </summary>
     int size = 2;
+
+    /// <summary>
+    /// 배의 칸별 그리드 위치
+    /// </summary>
+    Vector2Int[] positions;
 
     /// <summary>
     /// 배의 모델링 게임오브젝트의 트랜스폼
@@ -46,14 +56,41 @@ public class Ship : MonoBehaviour
     /// </summary>
     Renderer shipRenderer;
 
+    /// <summary>
+    /// 이 배를 가지고 있는 플레이어
+    /// </summary>
+    PlayerBase owner;
+
     // 델리게이트 ----------------------------------------------------------------------------------
-    public Action<Ship> onDead;
+
+    /// <summary>
+    /// 배가 배치되거나 배치해제가 되었을 때 실행되는 델리게이트.
+    /// 파라메터 : 배치할때는 true, 해제할 때는 false
+    /// </summary>
+    public Action<bool> onDeploy;
+
+    /// <summary>
+    /// 배가 공격을 당했을 때 실행될 델리게이트
+    /// 파라메터 : 자기자신
+    /// </summary>
+    public Action<Ship> onHit;
+
+    /// <summary>
+    /// 배가 침몰할 때 실행될 델리게이트.
+    /// 파라메터 : 자기 자신
+    /// </summary>
+    public Action<Ship> onSinking;
 
     // 프로퍼티들 ----------------------------------------------------------------------------------
     /// <summary>
     /// 배의 타입 확인용 프로퍼티
     /// </summary>
     public ShipType Type { get => type; }
+
+    /// <summary>
+    /// 배의 이름 확인용 프로퍼티
+    /// </summary>
+    public string Name { get => shipName; }
 
     /// <summary>
     /// 배의 방향 확인 및 설정용 프로퍼티
@@ -72,12 +109,17 @@ public class Ship : MonoBehaviour
     /// <summary>
     /// 배의 크기 확인용 프로퍼티
     /// </summary>
-    public int Size { get => size; }
+    public int Size => size;
 
     /// <summary>
-    /// 배의 배치 여부 확인용 프로퍼티
+    /// 배의 HP
     /// </summary>
-    public bool IsDeployed { get => isDeployed; set => isDeployed = value; }
+    public int HP => hp;
+
+    /// <summary>
+    /// 배의 배치 여부 확인용 프로퍼티. 읽기 전용
+    /// </summary>
+    public bool IsDeployed => isDeployed;
 
     /// <summary>
     /// 함선의 생존 여부를 알려주는 프로퍼티
@@ -88,6 +130,16 @@ public class Ship : MonoBehaviour
     /// 배가 가지고 있는 모델의 랜더러에 접근하기 위한 프로퍼티
     /// </summary>
     public Renderer Renderer => shipRenderer;
+
+    /// <summary>
+    /// 배의 칸별 그리드 좌표를 읽을 수 있는 프로퍼티
+    /// </summary>
+    public Vector2Int[] Positions => positions;
+
+    /// <summary>
+    /// 이 배를 가지고 있는 플레이어를 확인 할 수 있는 프로퍼티
+    /// </summary>
+    public PlayerBase Owner => owner;
 
     // 함수들 --------------------------------------------------------------------------------------
 
@@ -102,15 +154,22 @@ public class Ship : MonoBehaviour
         {
             case ShipType.Carrier:
                 size = 5;
+                shipName = "항공모함";
                 break;
             case ShipType.Battleship:
+                shipName = "전함";
                 size = 4;
                 break;
             case ShipType.Destroyer:
+                shipName = "구축함";
+                size = 3;
+                break;
             case ShipType.Submarine:
+                shipName = "잠수함";
                 size = 3;
                 break;
             case ShipType.PatrolBoat:
+                shipName = "경비정";
                 size = 2;
                 break;
             case ShipType.None:
@@ -131,6 +190,29 @@ public class Ship : MonoBehaviour
 
         // 배의 초기방향 지정
         Direction = ShipDirection.NORTH;
+
+        // 배의 소유자 등록
+        owner = GetComponentInParent<PlayerBase>();
+    }
+
+    /// <summary>
+    /// 함선이 배치될 때 실행될 함수
+    /// </summary>
+    /// <param name="positions">배치된 위치들</param>
+    public void Deploy(Vector2Int[] positions)
+    {
+        this.positions = positions;
+        isDeployed = true;
+        onDeploy?.Invoke(true);
+    }
+
+    /// <summary>
+    /// 함선이 배치 해제되었을 때 실행될 함수
+    /// </summary>
+    public void UnDeploy()
+    {
+        isDeployed = false;
+        onDeploy?.Invoke(false);
     }
 
     /// <summary>
@@ -172,21 +254,25 @@ public class Ship : MonoBehaviour
     /// </summary>
     public void OnAttacked()
     {
-        //Debug.Log($"{type} 공격 받음");
+        //Debug.Log($"{owner.name}의 {shipName}이 공격 받음");
         hp--;
-        if(hp <= 0)
+        if(hp > 0)
         {
-            OnDie();
+            onHit?.Invoke(this);    // 맞았는데 침몰되지 않았으면 맞았다고 델리게이트 실행
+        }
+        else
+        {
+            OnSinking();            // 맞았는데 HP가 0 이하면 침몰
         }
     }
 
     /// <summary>
     /// 이 배가 침몰당했을 때 실행될 함수
     /// </summary>
-    private void OnDie()
+    private void OnSinking()
     {
         Debug.Log($"{type} 침몰");
         isAlive = false;
-        onDead?.Invoke(this);
+        onSinking?.Invoke(this);
     }
 }
